@@ -1,0 +1,22 @@
+<view class="header">
+  <view class="search-box">
+    <icon class="search2-icon" type='search'></icon>
+    <input class='search2' placeholder='寻找你喜欢的商品'></input>
+  </view>
+</view>
+<view class="type-big">
+  <view  class="type">
+  <block wx:for="{{type}}">
+    <view data-id="{{index}}" data-content="{{item}}" bindtap='chooseType' wx:if="{{item}}" style='{{index == id?"border-right:none;color:red;border-left:1.5px solid red;":"border-right:1px solid #eee;color:black;border-left:none"}}' class="type-shopping1">{{item}}</view>
+  </block>
+  </view>
+  <view class="type-right">
+    <view class='one-box'></view>
+    <view class="second-type-view" wx:for="{{secondType}}">
+      <view class="second-type-small-view" wx:for="{{item}}">
+        <image data-id="{{item.tid}}" bindtap='thirdType' class="second-type-pic" src='{{item.url}}'></image>
+        <text class="second-type-first-text">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+</view>

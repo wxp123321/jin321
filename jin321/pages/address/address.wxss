@@ -1,0 +1,108 @@
+.acquiescence-address{
+  height: 200rpx;
+  width: 100%;
+}
+
+.acquiescence-address{
+  font-size: 28rpx;
+}
+
+.acquiescence-name,
+.name{
+  font-size: 36rpx;
+}
+
+.acquiescence-name{
+  position: absolute;
+  left: 26rpx;
+  line-height: 100rpx;
+}
+
+.acquiescence-phoneNumber{
+  position: absolute;
+  right: 26rpx;
+  line-height: 100rpx;
+}
+
+.acquiescence-main-info{
+  height:100rpx;
+  width: 100%;
+  position: relative;
+}
+
+.acquiescence-detail-address{
+  width: 698rpx;
+  height: 100rpx;
+  margin: 0 auto;
+}
+
+.one-line{
+  width: 100%;
+  height: 1px;
+  background: #ddd;
+}
+
+.choose{
+  height: 80rpx;
+  width: 100%;
+  line-height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.choose-acquiescence-address{
+  margin-left: 26rpx;
+  color: #ff7733;
+}
+
+.one-box{
+  width: 100%;
+  height: 20rpx;
+  background: #eee;
+}
+
+.edit-view{
+  position: absolute;
+  right: 200rpx;
+}
+
+.edit-view text,
+.delete-view text{
+  margin-left: 16rpx;
+}
+
+.edit{
+  width:32rpx;
+  height: 36rpx;
+  vertical-align: middle;
+}
+
+.delete-view{
+  position: absolute;
+  right: 50rpx;
+}
+
+.delete{
+  width: 32rpx;
+  height: 36rpx;
+  vertical-align: middle;
+}
+
+.add-address{
+  width: 100%;
+  height: 140rpx;
+  background: red;
+  position: fixed;
+  bottom: 0;
+  color: white;
+  font-size: 32rpx;
+  line-height: 140rpx;
+  text-align: center;
+}
+
+.one-big-box{
+  width: 100%;
+  height: 140rpx;
+  margin-top: 100rpx;
+}

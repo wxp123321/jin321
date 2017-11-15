@@ -1,0 +1,48 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/my/my",
+    "pages/classification/classification",
+    "pages/shoppingcar/shoppingcar",
+    "pages/merchandise/merchandise",
+    "pages/search/search",
+    "pages/address/address"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Jin321",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#cccccc",
+    "selectedColor":"#f19149",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath":"images/homepage.png",
+        "selectedIconPath":"images/homepage.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/classification/classification",
+        "iconPath": "images/type.png",
+        "selectedIconPath": "images/type.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/shoppingcar/shoppingcar",
+        "iconPath": "images/chart.png",
+        "selectedIconPath": "images/chart.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "images/mine.png",
+        "selectedIconPath": "images/mine.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

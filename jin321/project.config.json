@@ -1,0 +1,70 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": false,
+		"minified": true
+	},
+	"compileType": "weapp",
+	"libVersion": "1.5.3",
+	"appid": "wxd390b42487afbe16",
+	"projectname": "%E6%99%8B321",
+	"condition": {
+		"weapp": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "my",
+					"pathName": "pages/my/my",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "shop",
+					"pathName": "pages/shoppingcar/shoppingcar",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "type",
+					"pathName": "pages/classification/classification",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "merchandise",
+					"pathName": "pages/merchandise/merchandise",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "car",
+					"pathName": "pages/shoppingcar/shoppingcar",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "search",
+					"pathName": "pages/search/search",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "address",
+					"pathName": "pages/address/address",
+					"query": ""
+				}
+			]
+		},
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		}
+	}
+}

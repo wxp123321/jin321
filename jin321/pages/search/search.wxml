@@ -1,0 +1,16 @@
+<view class="search">
+  <input focus="{{focus}}" bindconfirm="search" confirm-type="搜索" class="top-search" placeholder-style="color:#ddd; font-size:16px" placeholder='输入你喜欢的商品'></input>
+  <view class="one-line"></view>
+</view>
+<view class="sequencing">
+  <text bindtap='changeText' data-id="0" class="{{text1}}">销量优先</text>
+  <text bindtap='changeText' data-id="1" class="{{text2}}">价格优先</text>
+</view>
+<view wx:if="{{info}}" data-id="{{item.pid}}" catchtap='watchProduct' class="particulars" wx:for="{{info}}">
+  <image wx:if="{{item.url}}" class="particulars-pic" src='{{item.url}}'></image>
+  <view class='particulars-info'>
+    <text>{{item.name}}</text>
+    <text>￥{{item.price}}</text>
+    <text>{{item.psellnum}}人付款</text>
+  </view>
+</view>

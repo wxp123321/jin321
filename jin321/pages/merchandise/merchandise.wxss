@@ -1,0 +1,145 @@
+.merchandise-pic{
+  height: 750rpx;
+  width: 100%;
+  position: relative;
+}
+
+.merchandise-icon{
+  position: absolute;
+  top:29rpx;
+  left: 16rpx;
+  z-index: 1000;
+  width: 18rpx;
+  height: 16rpx;
+}
+
+.shoppingcar-icon{
+  position: absolute;
+  right: 16rpx;
+  top: 29rpx;
+  z-index: 1000;
+}
+
+.merchandise-text{
+  display: inline-block;
+  width: 80%;
+  margin-left: 24rpx;
+  font-size: 16px;
+}
+
+.merchandise-price{
+  margin-left: 24rpx;
+  color: #f19149;
+  display: block;
+  font-size: 20px;
+}
+
+.merchandise-original{
+  display: block;
+  margin-left: 24rpx;
+  color: #ddd;
+  font-size: 14px;
+  text-decoration: line-through;
+}
+
+.merchandise-volume{
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  color: #ddd;
+}
+
+.one-sm-box{
+  width:100%;
+  height: 15px;
+  background: #fafafa;
+}
+
+.specification{
+  width: 100%;
+  height: 60rpx;
+  border-bottom:1px solid #ddd; 
+}
+
+.specification-text{
+  line-height: 60rpx;
+  font-size: 16px;
+  margin-left: 24rpx;
+}
+
+.footer{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0;
+}
+
+.one-box{
+  width: 308rpx;
+  border-top: 1px solid #ddd;
+  background: white;
+}
+
+.purchasing,
+.add-shoppingcar{
+  width: 221rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 16px;
+  color: white;
+}
+
+.add-shoppingcar{
+  background: -webkit-linear-gradient(left,#ffc700,#ff9803); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right,#ffc700,#ff9803); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right,#ffc700,#ff9803); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right,#ffc700,#ff9803); /* 标准的语法 */
+}
+
+.purchasing{
+  background: -webkit-linear-gradient(left,#ff7301,#ff4d01); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right,#ff7301,#ff4d01); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right,#ff7301,#ff4d01); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right,#ff7301,#ff4d01); /* 标准的语法 */
+}
+
+.box{
+  height: 230rpx;
+}
+
+/* 规格 */ 
+.specification-choose{
+  width: 100%;
+}
+
+.specification-choose-box{
+  height: 50rpx;
+  background: #ddd;
+  border-radius: 10rpx;
+  line-height: 50rpx;
+  font-size: 14px;
+  margin-left: 50rpx;
+  padding: 8rpx 10rpx;
+  font-family: tahoma, arial, 'Hiragino Sans GB', 宋体, sans-serif;
+  margin-top: 30rpx;
+  font-weight: bold;
+  float: left;
+}
+
+.specification2-choose-box{
+  height: 50rpx;
+  background: #ddd;
+  border-radius: 10rpx;
+  line-height: 50rpx;
+  font-size: 14px;
+  margin-left: 50rpx;
+  padding: 8rpx 10rpx;
+  font-family: tahoma, arial, 'Hiragino Sans GB', 宋体, sans-serif;
+  margin-top: 30rpx;
+  font-weight: bold;
+  display: table;
+}
+

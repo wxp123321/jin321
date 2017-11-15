@@ -1,0 +1,79 @@
+<view>
+  <!-- 头部 -->
+  <view class="bar">
+    <view class="head">
+      <text>Jin321.com  晋321</text>
+    </view>
+    <view class="sm-head">
+      <text>诚 <text>· </text>信 <text>· </text>为 <text>· </text>本</text>
+    </view>
+    <view class='search-block'>
+      <icon class="search-icon" type='search'></icon>
+      <input bindfocus="search" class='search' placeholder-style="color:#cccccc" placeholder='搜索晋321商品'/>
+    </view>
+  </view>
+
+  <!-- 轮播图 -->
+  <view class='roasting'>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}" wx:key="*this">
+        <swiper-item>
+          <image bindtap='jump' data-url="{{item}}" src="{{item}}" mode="{{mode}}" class="slide-image"/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!-- 限时秒杀 -->
+  <view class='second-kill'>
+    <!-- 第一块内容 -->
+    <view class='first-kill'>
+      <image class='time-limit' src='../../images/kill.png'></image>
+      <text class="time"></text>
+      <view class='kill-pic'>
+        <image bindtap='jump' data-url="{{killpicf}}" class="kill-pic-first" src='{{killpicf}}'></image>
+      </view>
+      <view class='kill-price'>
+        <text class="current-price">￥{{killpicfprice}}</text>
+        <text class="original-price">￥{{newkillpicfprice}}</text>
+      </view>      
+    </view>
+    <!-- for循环秒杀 -->
+      <view class='other-kill' wx:for="{{killpicUrl}}">
+        <view class='kill-pic other-kill-pic'>
+          <image bindtap='jump' data-url='{{item.url}}' wx:if="{{item.url}}" class="kill-pic-first" src='{{item.url}}'></image>
+        </view>
+        <view class='kill-price'>
+          <text class="current-price">￥{{item.pssellprice}}</text>
+          <text class="original-price">￥{{item.psoriprice}}</text>
+        </view>
+      </view>
+  </view>
+
+  <view>
+    <view class='partnership-shopping'>
+      <image class='partnership-pic' src='../../images/partnership.png'></image>
+    </view>
+    <view>
+      <view data-url='{{item.url}}' bindtap='jump'  class="productPos" wx:for="{{parentspic}}">
+        <image wx:if="{{item}}" class="productPos-pic" src='{{item.url}}'></image>
+        <text class="big-product-text">{{item.pname}}</text>
+        <text class="small-product-text">{{item.psummary}}</text>
+        <view class="p-price-box">
+          <text class='product-price-now'>￥{{item.pssellprice }}</text>
+          <text class="product-price">￥{{item.psoriprice}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+
+
+
+
+
+
+
+
+</view>

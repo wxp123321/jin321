@@ -1,0 +1,79 @@
+.user-info{
+  height: 160px;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+
+.username{
+  position: absolute;
+  left: 80rpx;
+  bottom: 110rpx;
+  color: #000;
+  font-size: 36px;
+}
+
+.myportrait{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  background: black;
+  position: absolute;
+  right: 80rpx;
+  bottom: 80rpx;
+}
+
+.s-box{
+  height: 19rpx;
+  width: 100%;
+  background: #f1f1f1;
+}
+
+.order,
+.address,
+.address,
+.commission{
+  width: 100%;
+  height: 108rpx;
+  position: relative;
+}
+
+.order-icon{
+  width: 54rpx;
+  height: 62rpx;
+  position: absolute;
+  top: 28rpx;
+  left: 74rpx;
+}
+
+.my-order,
+.manage-address,
+.my-commission{
+  position: absolute;
+  left: 188rpx;
+  top: 35rpx;
+  font-size: 36rpx;
+  color: #707070;
+}
+
+.address,
+.commission{
+  border-bottom: 1px solid #f1f1f1; 
+}
+
+.address-icon,
+.commission-icon{
+  width: 62rpx;
+  height: 62rpx;
+  position: absolute;
+  top: 28rpx;
+  left: 74rpx;
+}
+
+.commission-icon{
+  width: 62rpx;
+  height: 50rpx;
+}
+
+
+

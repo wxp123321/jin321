@@ -1,0 +1,24 @@
+<view wx:if="{{address}}" class="acquiescence-address" wx:for="{{address}}">
+  <view class="acquiescence-main-info">
+    <text class="acquiescence-name">{{item.username}}</text>
+    <text class="acquiescence-phoneNumber">{{item.phoneNumber}}</text>
+  </view>
+  <view class="acquiescence-detail-address">
+    <text class="acquiescence-address-text">{{item.address}}</text>
+  </view>
+  <view class="one-line"></view>
+  <view class='choose'>
+    <checkbox class="choose-acquiescence-address" checked='{{item.checked}}'> 默认地址</checkbox>
+    <view bindtap='edit' class="edit-view">
+      <image src='../../images/write.png' class="edit"></image>
+      <text>编辑</text>
+    </view>
+    <view bindtap='delete' data-id="{{item.id}}" class="delete-view">
+      <image class="delete" src='../../images/delete.png'></image>
+      <text>删除</text>
+    </view>
+  </view>
+  <view class='one-box'></view>
+</view>
+<view class="add-address">添加新地址</view>
+<view class='one-big-box'></view>

@@ -1,0 +1,190 @@
+.bar{
+  width: 100%;
+  height: 143px;
+  background: #f19149;
+  padding-top: 72px;
+}
+
+swiper{
+  height: 120px;
+}
+
+.head{
+  color: white;
+  font-size: 25.01px;
+  text-align: center; 
+  font-weight: bold;
+}
+
+.sm-head{
+  color: white;
+  font-size: 16.68px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.sm-head text text{
+  font-size: 10px;
+}
+
+.search-block{
+  margin-top: 23px;
+}
+
+.search-icon{
+  margin-top: 10px;
+  position: absolute;
+  left: 216rpx;
+}
+
+.search{
+  height: 78rpx;
+  width: 282rpx;
+  background: white;
+  margin: 0 auto;
+  border-radius:20px;
+  padding: 0 186rpx 0 246rpx; 
+}
+
+.roasting,
+.second-kill{
+  width: 100%;
+  height: 120px;
+}
+
+.slide-image{
+  width: 100%;
+  height: 120px;
+}
+
+.second-kill{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #ccc;
+}
+
+.first-kill{
+  color: #f19149;
+  margin-left: 40rpx;
+  margin-top: 17rpx;
+  padding-right:40rpx; 
+  display: flex;
+  flex-direction: column; 
+  position: relative;
+}
+
+.kill-pic-first{
+  width: 165rpx;
+  height: 58px;
+}
+
+.time-limit{
+  width: 94rpx;
+  height: 24rpx;
+}
+
+.time{
+  position: absolute;
+  font-size: 12px;
+  left: 120rpx;
+  top: -2rpx;
+}
+
+.kill-pic{
+  width: 165rpx;
+  height: 58px;
+  margin-top: 10px;
+}
+
+.kill-price{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.other-kill{
+  margin-top: 19px;
+}
+
+.other-kill-pic{
+  padding-right: 80rpx;
+  border-left: 1px solid #ccc;
+}
+
+.other-kill-pic image{
+  padding-left: 40rpx; 
+}
+
+.current-price{
+  color: red;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.original-price{
+  color: #ccc;
+  font-size: 11px;
+  text-decoration: line-through;
+}
+
+.current-price,
+.original-price{
+  margin-left: -20rpx;
+}
+
+.partnership-pic{
+  width: 286rpx;
+  height: 36rpx;
+  margin-left: 232rpx;
+}
+
+.productPos{
+  position: relative;
+}
+
+.productPos-pic{
+  width: 208rpx;
+  height: 208rpx;
+  margin-left: 86rpx;
+  margin-top: 28rpx;
+}
+
+.big-product-text{
+  font-size: 25rpx;
+  font-weight: bold;
+  position: absolute;
+  top: 60rpx;
+  left: 380rpx;
+}
+
+.small-product-text{
+  font-size: 19.6rpx;
+  position: absolute;
+  font-weight: bold;
+  top: 98rpx;
+  left: 380rpx;
+}
+
+.product-price-now{
+  color: #ff0000;
+  font-size: 25rpx;
+  font-weight: bold;
+  position: absolute;
+  top: 125rpx;
+  left: 380rpx;
+}
+
+.product-price{
+  color: #ccc;
+  font-size: 19.6rpx;
+  position: absolute;
+  font-weight: bold;
+  top: 132rpx;
+  left: 450rpx;
+  text-decoration: line-through;
+}
+
+.type-big{
+  display: flex;
+  flex-direction: row;
+}

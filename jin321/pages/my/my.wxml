@@ -1,0 +1,21 @@
+<view>
+  <!-- 用户名以及用户头像 -->
+  <view class="user-info"> 
+    <text class='username'>{{username}}</text>
+    <image class="myportrait" src='{{myportrait}}'></image>
+  </view>
+  <view class="s-box"></view>
+  <view class='order'>
+    <image class='order-icon' src='../../images/order.png'></image>
+    <text class="my-order">我的订单</text>
+  </view>
+  <view class="s-box"></view>
+  <view bindtap='manageAddress' class='address'>
+    <image class='address-icon' src='../../images/address.png'></image>
+    <text  class="manage-address">管理地址</text>
+  </view>
+  <view class='commission'> 
+    <image class='commission-icon' src='../../images/money.png'></image>
+    <text class='my-commission'>我的佣金</text>
+  </view>
+</view>
