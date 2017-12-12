@@ -5,7 +5,7 @@ Page({
    */
   data: {
     username: "用户名",
-    myportrait: "https://www.haojunqian.cn/jin321/productpics/1.png",
+    myportrait: "../../images/white.png",
     session:""
   },
 
@@ -59,7 +59,7 @@ Page({
         wx.login({
           success: function (res) {
             wx.request({
-              url: "https://www.haojunqian.cn/jin321/wx/login.do",
+              url: "https://www.jin321.cn/jin321/wx/login.do",
               method: "POST",
               data: {
                 "js_code": res.code
@@ -74,7 +74,7 @@ Page({
                       key: 'mysession',
                       success: function (res) {
                         wx.request({
-                          url: "https://www.haojunqian.cn/jin321/wx/getUserMessage.do",
+                          url: "https://www.jin321.cn/jin321/wx/getUserMessage.do",
                           method: "POST",
                           data: {
                             "session": res.data,
@@ -128,7 +128,7 @@ Page({
         wx.login({
           success: function (res) {
             wx.request({
-              url: "https://www.haojunqian.cn/jin321/wx/login.do",
+              url: "https://www.jin321.cn/jin321/wx/login.do",
               method: "POST",
               data: {
                 "js_code": res.code
@@ -143,7 +143,7 @@ Page({
                       key: 'mysession',
                       success: function (res) {
                         wx.request({
-                          url: "https://www.haojunqian.cn/jin321/wx/getUserMessage.do",
+                          url: "https://www.jin321.cn/jin321/wx/getUserMessage.do",
                           method: "POST",
                           data: {
                             "session": res.data,

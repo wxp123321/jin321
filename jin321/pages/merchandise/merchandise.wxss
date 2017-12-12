@@ -1,3 +1,7 @@
+.merchandise swiper{
+  height: 750rpx;
+  width: 100%;
+}
 .merchandise-pic{
   height: 750rpx;
   width: 100%;
@@ -113,6 +117,8 @@
 /* 规格 */ 
 .specification-choose{
   width: 100%;
+  padding-bottom: 20px; 
+  border-bottom: 1px solid #ddd;
 }
 
 .specification-choose-box{
@@ -142,4 +148,10 @@
   font-weight: bold;
   display: table;
 }
+
+.detailImg{
+  width: 750rpx;
+}
+
+
 

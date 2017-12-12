@@ -1,7 +1,7 @@
 <view class="header">
   <view class="search-box">
     <icon class="search2-icon" type='search'></icon>
-    <input class='search2' placeholder='寻找你喜欢的商品'></input>
+    <input class='search2' bindfocus="search" placeholder='寻找你喜欢的商品'></input>
   </view>
 </view>
 <view class="type-big">

@@ -37,6 +37,7 @@ var t = function(msd){
       time = parseInt(time / 60.0) + "分钟" + parseInt((parseFloat(time / 60.0) -
         parseInt(time / 60.0)) * 60) + "秒";
       return {
+        h:0,
         m:m,
         s:s
       }
@@ -60,7 +61,9 @@ var t = function(msd){
     else {
       time = parseInt(time) + "秒";
       return {
-        s:time
+        h: 0,
+        m: 0,
+        s: time
       }
     }
   }
@@ -74,21 +77,21 @@ Page({
   data: {
     //轮播图图片
     imgUrls: [
-      "https://www.jin321.cn/jin321/productpics/1.png"
+      "../../images/white.png"
     ],
     time:{
 
     },
     //秒杀第一个图
-    killpicf:"https://www.jin321.cn/jin321/productpics/1.png",
+    killpicf:"../../images/white.png",
     killpicfprice:"",
     newkillpicfprice:"",
     //秒杀图片
     killpicUrl:[
       {
-        url:"https://www.jin321.cn/jin321/productpics/1.png",
-        timestart:"",
-        timeend:"",
+        url:"../../images/white.png",
+        // timestart:"",
+        // timeend:"",
         psoriprice:"",
         pssellprice:""
       }
@@ -97,7 +100,7 @@ Page({
     parentspic:[
       //合伙人商品信息
       {
-        url:"https://www.jin321.cn/jin321/productpics/1.png",
+        url:"../../images/white.png",
         pname:"",
         psummary:"",
         psoriprice:"",
@@ -108,7 +111,9 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    mode: "scaleToFill"
+    mode: "scaleToFill",
+    time:"",
+    killStyle:''
   },
   onLoad:function(){
     var that = this;
@@ -348,7 +353,6 @@ Page({
       url: "https://www.jin321.cn/jin321/wx/firstRequest.do",
       method:"POST",
       success:function(res){
-        console.log(res.data);
         var picUrl = [];
         var timeKill = {
 
@@ -362,41 +366,75 @@ Page({
         const roastPic = res.data.rollingpicks;
         const timekill = res.data.timeproducs;
         const parentsp = res.data.productPos;
-        const msd = timekill[0].timeend - timekill[0].timestart;
-        var a = t(msd);
-        that.setData({
-          time:a
-        });
         for(var i = 0;i<roastPic.length;i++){
           picUrl[i] = basePath + roastPic[i].rpicurl;
           const a = picUrl[i];
           picId[a] = roastPic[i].pid;
         }
-        that.setData({
-          killpicfprice: timekill[0].psoriprice
-        });
-        that.setData({
-          newkillpicfprice: timekill[0].pssellprice
-        });
-        picId[timekill[0].ppicurl] = timekill[0].pid;
-        for(var j = 1;j<timekill.length;j++){
-          const json = {
-            url: basePath + timekill[j].ppicurl,
-            timestart: timekill[j].timestart,
-            timeend: timekill[j].timeend,
-            psoriprice: timekill[j].psoriprice,
-            pssellprice: timekill[j].pssellprice
+        if(timekill.length){
+          // var timestart = new Date();
+          // var msd = timekill[0].timeend - timestart;
+          // var a = t(msd);
+          // that.setData({
+          //   time:a
+          // });
+          that.setData({
+            killpicfprice: timekill[0].psoriprice
+          });
+          that.setData({
+            newkillpicfprice: timekill[0].pssellprice
+          });
+          picId[timekill[0].ppicurl] = timekill[0].pid;
+          for(var j = 1;j<timekill.length;j++){
+            const json = {
+              url: basePath + timekill[j].ppicurl,
+              // timestart: timekill[j].timestart,
+              // timeend: timekill[j].timeend,
+              psoriprice: timekill[j].psoriprice,
+              pssellprice: timekill[j].pssellprice
+            }
+            timeKill[j-1] = json;
+            const a = timeKill[j-1].url;
+            picId[a] = timekill[j].pid;
           }
-          timeKill[j-1] = json;
-          const a = timeKill[j-1].url;
-          picId[a] = timekill[j].pid;
+          picId[basePath + res.data.timeproducs[0].ppicurl] = res.data.timeproducs[0].pid;
+          that.setData({
+            killpicf: basePath+res.data.timeproducs[0].ppicurl
+          });
+          that.setData({
+            killpicUrl:timeKill
+          });
+          // var tsetinter =  setInterval(function(){
+          //   // timestart = new Date();
+          //   // var msd = timekill[0].timeend - timestart;
+          //   // var a = t(msd);
+          //   // if(a){
+          //   //   that.setData({
+          //   //     time: a
+          //   //   });
+          //   // }else{
+          //   //   that.setData({
+          //   //     time: "秒杀结束"
+          //   //   });
+          //   //   clearInterval(tsetinter);
+          //   // }
+          // },1000);
+        }else{
+          that.setData({
+            killStyle:'timeBox'
+          });
+          console.log("没有热卖商品");
         }
-        console.log(picId);
         for(var k = 0;k<parentsp.length;k++){
+          if (parentsp[k].psummary.length > 40){
+            var psummary = parentsp[k].psummary.substring(0, 40)+"...";
+          }else{
+            var psummary = parentsp[k].psummary;
+          }
           const json = {
             "url": basePath + parentsp[k].ppicurl,
             "pname": parentsp[k].pname,
-            "psummary": parentsp[k].psummary,
+            "psummary": psummary,
             psoriprice: parentsp[k].psoriprice,
             pssellprice: parentsp[k].pssellprice
           }
@@ -406,12 +444,6 @@ Page({
         }
         that.setData({
           imgUrls:picUrl
-        });
-        that.setData({
-          killpicf: basePath+res.data.timeproducs[0].ppicurl
-        });
-        that.setData({
-          killpicUrl:timeKill
         });
         that.setData({
           parentspic: parentspic
@@ -433,16 +465,6 @@ Page({
       url: '../search/search',
     })
   }
-
-  
-
-
-
-
-
-
-
-
 });
 
 

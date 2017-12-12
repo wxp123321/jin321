@@ -5,17 +5,16 @@ var products = [];
 //记录pid
 var pId = {};
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    mall:"jin商城",
+    mall:"",
     products:"",
     isChooseStore:false,
     isChooseProducts:false,
-    productName:"张鑫大神张鑫大",
-    sizeName:"手稿",
+    productName:"",
+    sizeName:"",
     pNum:1,
     productPrice:"0",
     rec:[],
@@ -36,34 +35,38 @@ Page({
             uid:res.data
           },
           success: function (res) {
-            var basePath = res.data.baseUrl;
-            var data = [];
-            for (var i = 0, ind = 0;i<res.data.chartDetail.length;i++){
-              var info = [];
-              data[i] = {
-                mall: res.data.chartDetail[i].dname,
-                checked:false
-              }
-              for (var j = 0; j < res.data.chartDetail[i].chartDetails.length; j++ , ind++){
-                carId[ind] = res.data.chartDetail[i].chartDetails[j].cartid;
-                products[ind] = res.data.chartDetail[i].chartDetails[j].pnumber;
-                const url = "https://www.jin321.cn/jin321/" + res.data.chartDetail[i].chartDetails[j].ppicurl;
-                pId[url] = res.data.chartDetail[i].chartDetails[j].pid;
-                info[j] = {
-                  url: url,
-                  pname: res.data.chartDetail[i].chartDetails[j].pname,
-                  sizeName: res.data.chartDetail[i].chartDetails[j].sizename,
-                  price: res.data.chartDetail[i].chartDetails[j].pssellprice,
-                  pNum: res.data.chartDetail[i].chartDetails[j].pnumber,
-                  ind:ind,
-                  checked:false
+            if(res.data.chartDetail){
+              var basePath = res.data.baseUrl;
+              var data = [];
+              for (var i = 0, ind = 0; i < res.data.chartDetail.length; i++) {
+                var info = [];
+                data[i] = {
+                  mall: res.data.chartDetail[i].dname,
+                  checked: false
                 }
+                for (var j = 0; j < res.data.chartDetail[i].chartDetails.length; j++ , ind++) {
+                  carId[ind] = res.data.chartDetail[i].chartDetails[j].cartid;
+                  products[ind] = res.data.chartDetail[i].chartDetails[j].pnumber;
+                  const url = "https://www.jin321.cn/jin321/" + res.data.chartDetail[i].chartDetails[j].ppicurl;
+                  pId[url] = res.data.chartDetail[i].chartDetails[j].pid;
+                  info[j] = {
+                    url: url,
+                    pname: res.data.chartDetail[i].chartDetails[j].pname,
+                    sizeName: res.data.chartDetail[i].chartDetails[j].sizename,
+                    price: res.data.chartDetail[i].chartDetails[j].pssellprice,
+                    pNum: res.data.chartDetail[i].chartDetails[j].pnumber,
+                    ind: ind,
+                    checked: false
+                  }
+                }
+                data[i].info = info;
               }
-              data[i].info = info;
+              that.setData({
+                rec: data
+              });
+            }else{
+              console.log("没商品");
             }
-            that.setData({
-              rec:data
-            });
           }
         })
       },
@@ -92,34 +95,38 @@ Page({
             uid: res.data
           },
           success: function (res) {
-            var basePath = res.data.baseUrl;
-            var data = [];
-            for (var i = 0, ind = 0; i < res.data.chartDetail.length; i++) {
-              var info = [];
-              data[i] = {
-                mall: res.data.chartDetail[i].dname,
-                checked:false
-              }
-              for (var j = 0; j < res.data.chartDetail[i].chartDetails.length; j++ , ind++) {
-                carId[ind] = res.data.chartDetail[i].chartDetails[j].cartid;
-                products[ind] = res.data.chartDetail[i].chartDetails[j].pnumber;
-                const url = "https://www.jin321.cn/jin321/" + res.data.chartDetail[i].chartDetails[j].ppicurl;
-                pId[url] = res.data.chartDetail[i].chartDetails[j].pid;
-                info[j] = {
-                  url: url,
-                  pname: res.data.chartDetail[i].chartDetails[j].pname,
-                  sizeName: res.data.chartDetail[i].chartDetails[j].sizename,
-                  price: res.data.chartDetail[i].chartDetails[j].pssellprice,
-                  pNum: res.data.chartDetail[i].chartDetails[j].pnumber,
-                  ind: ind,
-                  checked:false,
+            if (res.data.chartDetail) {
+              var basePath = res.data.baseUrl;
+              var data = [];
+              for (var i = 0, ind = 0; i < res.data.chartDetail.length; i++) {
+                var info = [];
+                data[i] = {
+                  mall: res.data.chartDetail[i].dname,
+                  checked: false
                 }
+                for (var j = 0; j < res.data.chartDetail[i].chartDetails.length; j++ , ind++) {
+                  carId[ind] = res.data.chartDetail[i].chartDetails[j].cartid;
+                  products[ind] = res.data.chartDetail[i].chartDetails[j].pnumber;
+                  const url = "https://www.jin321.cn/jin321/" + res.data.chartDetail[i].chartDetails[j].ppicurl;
+                  pId[url] = res.data.chartDetail[i].chartDetails[j].pid;
+                  info[j] = {
+                    url: url,
+                    pname: res.data.chartDetail[i].chartDetails[j].pname,
+                    sizeName: res.data.chartDetail[i].chartDetails[j].sizename,
+                    price: res.data.chartDetail[i].chartDetails[j].pssellprice,
+                    pNum: res.data.chartDetail[i].chartDetails[j].pnumber,
+                    ind: ind,
+                    checked: false
+                  }
+                }
+                data[i].info = info;
               }
-              data[i].info = info;
+              that.setData({
+                rec: data
+              });
+            } else {
+              console.log("没商品");
             }
-            that.setData({
-              rec: data
-            });
           }
         })
       },
@@ -252,30 +259,33 @@ Page({
     var that = this;
     var ind = e.currentTarget.dataset.ind;
     var carid = carId[ind];
-    console.log(carid);
     wx.request({
       url: "https://www.jin321.cn/jin321/wx/deleteChart.do",
       method:"POST",
       data:{
-        "chartid":carid
+        chartid:carid
       },
       success:function(res){
-        console.log(res);
-        var sum = 0;
         var rec = that.data.rec;
-        console.log(rec);
         if(res.data.code == 1){
           for (var k = 0; k < rec.length; k++) {
             var q = 0;
+            if (rec[k].info.length == 0) {
+              
+            }else{
+              rec.splice(k,1);
+              that.setData({
+                rec: rec
+              });
+            }
             for (var o = 0; o < rec[k].info.length; o++ , q++) {
+              var sum = rec[k].info[q].ind;
               if(ind == sum){
                 that.remove(rec[k].info,rec[k].info[q]);
                 console.log(rec);
                 that.setData({
                   rec:rec
                 });
-              }else{
-                sum++;
               }
             }
           }

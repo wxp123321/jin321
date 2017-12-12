@@ -1,5 +1,11 @@
 <view class="merchandise">
-  <image class='merchandise-pic' src="{{merchandisePic}}"></image>
+  <swiper indicator-dots="true" autoplay="false">
+      <block wx:for="{{imgUrls}}">
+        <swiper-item>
+          <image src="{{item}}" class='merchandise-pic'/>
+        </swiper-item>
+      </block>
+  </swiper>
   <text class='merchandise-text'>{{merchandiseTitle}}</text>
   <text class="merchandise-price">价格￥{{merchandisePrice}}</text>
   <text class="merchandise-original">价格￥{{merchandiseOriginal}}</text>
@@ -8,7 +14,7 @@
   <view class="specification">
     <text class="specification-text">选择规格</text>
   </view>
-  <view class='specification-choose'>
+  <view class='specification-choose clearfix'>
       <view wx:for="{{specification1}}">
         <text wx:if="{{item.one}}" data-id="{{index == 0? 0:index*2}}" data-content="{{item.one}}" style="{{index*2 == id? 'background:#ff9803':'background:#ddd'}}" bindtap='chooseSpecification' class='specification-choose-box'>{{item.one}}</text>
       <text wx:if="{{item.two}}" data-id="{{index == 0?1:index*2+1}}" data-content="{{item.two}}" style="{{index*2+1 == id? 'background:#ff9803':'background:#ddd'}}" bindtap='chooseSpecification' class='specification-choose-box'>{{item.two}}</text>
@@ -19,5 +25,8 @@
   <view class="one-box"></view>
   <view bindtap='addShoppingCar' class="add-shoppingcar">加入购物车</view>
   <view class="purchasing">立即购买</view>
+</view>
+<view class="detailImg" wx:for="{{img}}">
+  <image class="detailImg" src='{{item}}'></image>
 </view>
 <view class="box"></view>

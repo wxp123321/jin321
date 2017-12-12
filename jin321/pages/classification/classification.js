@@ -52,7 +52,7 @@ Page({
                   name: res.data[i].typename,
                   tid:res.data[i].tid
                 }
-                ]
+                ];
               } else if (i + 2 == res.data.length) {
                 secondType[j] = [{
                   url: "https://www.jin321.cn/jin321/" + res.data[i].picurl,
@@ -64,7 +64,7 @@ Page({
                   name: res.data[i + 1].typename,
                   tid: res.data[i+1].tid
                 }
-                ]
+                ];
               } else if (i + 3 <= res.data.length) {
                 secondType[j] = [{
                   url: "https://www.jin321.cn/jin321/" + res.data[i].picurl,
@@ -80,7 +80,7 @@ Page({
                   url: "https://www.jin321.cn/jin321/" + res.data[i + 2].picurl,
                   name: res.data[i + 2].typename,
                   tid: res.data[i+2].tid
-                }]
+                }];
               }
             }
             that.setData({
@@ -158,7 +158,7 @@ Page({
       },
       success:function(res){
         var j = 0;
-        for(var i = 0;i<res.data.length;i=i+3){
+        for(var i = 0;i<res.data.length;i=i+3,j++){
           if(i+1 == res.data.length){
             secondType[j] = [{
               url: "https://www.jin321.cn/jin321/" + res.data[i].picurl,
@@ -206,6 +206,11 @@ Page({
     var tid = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: '../search/search?tid='+tid,
+    })
+  },
+  search: function () {
+    wx.navigateTo({
+      url: '../search/search',
     })
   }
 

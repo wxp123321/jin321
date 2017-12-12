@@ -170,7 +170,7 @@ swiper{
   font-size: 25rpx;
   font-weight: bold;
   position: absolute;
-  top: 125rpx;
+  top: 150rpx;
   left: 380rpx;
 }
 
@@ -179,7 +179,7 @@ swiper{
   font-size: 19.6rpx;
   position: absolute;
   font-weight: bold;
-  top: 132rpx;
+  top: 155rpx;
   left: 450rpx;
   text-decoration: line-through;
 }
@@ -187,4 +187,8 @@ swiper{
 .type-big{
   display: flex;
   flex-direction: row;
+}
+
+.timeBox{
+  display: none;
 }

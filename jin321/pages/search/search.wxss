@@ -31,7 +31,7 @@
 }
 
 .text2{
-
+  
 }
 
 .sequencing{
@@ -46,6 +46,10 @@
   border-bottom: 1px solid #ddd;
   display: flex;
   flex-direction: row;
+}
+
+.particulars:first-child{
+  border-top:1px solid #ddd;
 }
 
 .particulars-pic{
@@ -63,6 +67,74 @@
   display: block;
   line-height: 70rpx;
   width: 400rpx;
+}
+
+.thirdType{
+  width: 100%;
+  font-size: 30rpx;
+  position: relative;
+  margin-left: 40rpx;
+  padding: 20rpx 0;
+  color: #ff4b02;
+  display: flex;
+  flex-direction: row;
+}
+
+.borderH{
+  width: 100%;
+  font-size: 30rpx;
+  position: relative;
+  margin-left: 40rpx;
+  padding: 20rpx 0;
+  color: #ff4b02;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px #ddd solid;
+}
+
+.triangle{
+  height:0px; 
+  width:0px;
+  border-left: 10px solid #ff4b02;
+  border:14rpx solid #000; 
+  border-color:#ff4b02 transparent transparent transparent;
+  margin-top: 10rpx;
+}
+
+.thirdType2{
+  width: 88%;
+  margin: 0 auto;
+  font-size: 24rpx;
+}
+
+.thirdType2 view{
+  padding: 15rpx 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.thirdType2-text:last-child{
+  border: 0;
+}
+
+.triangle2{
+  height:0px; 
+  width:0px;
+  border-left: 10px solid #ff4b02;
+  border:14rpx solid #000; 
+  border-color:transparent transparent transparent #ff4b02;
+  margin-top: 5rpx;
+  margin-left: 5rpx;
+}
+
+.changeType2{
+  width: 88%;
+  margin: 0 auto;
+  font-size: 24rpx;
+  display: none;
+}
+
+.searchHidden{
+  display: none;
 }
 
 
