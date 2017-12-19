@@ -179,8 +179,8 @@ swiper{
   font-size: 19.6rpx;
   position: absolute;
   font-weight: bold;
-  top: 155rpx;
-  left: 450rpx;
+  top: 158rpx;
+  left: 453rpx;
   text-decoration: line-through;
 }
 
