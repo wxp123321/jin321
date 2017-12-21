@@ -20,5 +20,5 @@
   </view>
   <view class='one-box'></view>
 </view>
-<view class="add-address">添加新地址</view>
+<view class="add-address" bindtap='addAddress'>添加新地址</view>
 <view class='one-big-box'></view>

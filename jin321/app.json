@@ -7,7 +7,10 @@
     "pages/shoppingcar/shoppingcar",
     "pages/merchandise/merchandise",
     "pages/search/search",
-    "pages/address/address"
+    "pages/address/address",
+    "pages/test/test",
+    "pages/addAddress/addAddress",
+    "pages/order/order"
   ],
   "window":{
     "backgroundTextStyle":"light",

@@ -24,7 +24,7 @@
 <view class="footer">
   <view class="one-box"></view>
   <view bindtap='addShoppingCar' class="add-shoppingcar">加入购物车</view>
-  <view class="purchasing">立即购买</view>
+  <view bindtap='order' class="purchasing">立即购买</view>
 </view>
 <view class="detailImg" wx:for="{{img}}">
   <image class="detailImg" src='{{item}}'></image>

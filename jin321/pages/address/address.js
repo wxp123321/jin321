@@ -149,5 +149,10 @@ Page({
         })
       }
     })
+  },
+  addAddress:function(){
+    wx.navigateTo({
+      url: '../addAddress/addAddress',
+    })
   }
 })
