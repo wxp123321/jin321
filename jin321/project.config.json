@@ -4,15 +4,24 @@
 		"urlCheck": true,
 		"es6": true,
 		"postcss": false,
-		"minified": true
+		"minified": true,
+		"newFeature": true
 	},
-	"compileType": "weapp",
+	"compileType": "miniprogram",
 	"libVersion": "1.5.3",
 	"appid": "wxd390b42487afbe16",
 	"projectname": "%E6%99%8B321",
 	"condition": {
-		"weapp": {
+		"search": {
 			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -55,16 +64,26 @@
 					"name": "address",
 					"pathName": "pages/address/address",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "test",
+					"pathName": "pages/test/test",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "add",
+					"pathName": "pages/addAddress/addAddress",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "order",
+					"pathName": "pages/order/order",
+					"query": ""
 				}
 			]
-		},
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
 		}
 	}
 }
