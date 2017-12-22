@@ -1,0 +1,46 @@
+<view>
+  <view class='info'>
+    <view class='one-info'>
+      <text>收货人</text>
+      <text class='username'>{{username}}</text>
+      <text class='phoneNumber'>{{phoneNumber}}</text>
+    </view>
+    <view class='second-info'>
+      <image class='site' src='../../images/site.png'></image>
+      <text>收货地址：</text>
+      <text>{{address}}</text>
+    </view>
+  </view>
+  <view class='clearfix'>
+    <image class='colorband' src='../../images/colorband.png'></image>
+  </view>
+  <view class='gray'></view>
+  <view>
+    <view class='store'>
+      <text class='storeName'>{{storeName}}</text>
+    </view>
+    <view class='s-info'>
+      <image src='' class='s-img'></image>
+      <text class='name'>{{}}</text>
+      <text class='price'>{{}}</text>
+      <text class='number'>{{}}</text>
+    </view>
+    <view class='distribution'>
+      <text class='distribution-text'>配送方式</text>
+      <text class='free-text'>快递 免邮 ></text>
+    </view>
+    <view class='message'>
+      <text>买家留言：</text>
+      <input></input>
+    </view>
+    <view class='sm-price'>
+      <text class='sm-number'>共1件商品</text>
+      <text class='sm-allprice'>小计: ￥1.00</text>
+    </view>
+  </view>
+  <view class='box'></view>
+  <view class='pay-view'>
+    <text>合计 ￥1.00</text>
+    <view class='submit'>提交订单</view>
+  </view>
+</view>
