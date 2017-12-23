@@ -15,7 +15,15 @@ Page({
    */
   onLoad: function (options) {
     // this.getInfo();
-    
+    if(options.code == 1){
+      //从详情页面点击
+      var pid = options.pid;
+      var sid = options.sid;
+      var svalue = options.svalue;
+      var price = options.price;
+      var titile = options.title;
+      
+    }
   },
 
   /**
