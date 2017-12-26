@@ -18,6 +18,7 @@ Page({
     pNum:1,
     productPrice:"0",
     rec:[],
+    price:0
   },
 
   /**
@@ -56,7 +57,9 @@ Page({
                     price: res.data.chartDetail[i].chartDetails[j].pssellprice,
                     pNum: res.data.chartDetail[i].chartDetails[j].pnumber,
                     ind: ind,
-                    checked: false
+                    checked: false,
+                    i:i,
+                    j:j
                   }
                 }
                 data[i].info = info;
@@ -116,7 +119,9 @@ Page({
                     price: res.data.chartDetail[i].chartDetails[j].pssellprice,
                     pNum: res.data.chartDetail[i].chartDetails[j].pnumber,
                     ind: ind,
-                    checked: false
+                    checked: false,
+                    i:i,
+                    j:j
                   }
                 }
                 data[i].info = info;
@@ -172,6 +177,7 @@ Page({
     var ind = e.currentTarget.dataset.ind;
     var carid = carId[ind];
     var rec = this.data.rec;
+    var price = 0;
     //现加入购物车的数量
     var number = products[ind]-1;
     //计数
@@ -207,6 +213,16 @@ Page({
     }else{
 
     }
+    for (var i = 0; i < rec.length; i++) {
+      for (var j = 0; j < rec[i].info.length; j++) {
+        if (rec[i].info[j].checked) {
+          price += rec[i].info[j].price * rec[i].info[j].pNum;
+        }
+      }
+    }
+    that.setData({
+      price: price
+    });
   },
   add:function(e){
     var that = this;
@@ -215,6 +231,8 @@ Page({
     var rec = this.data.rec;
     //现加入购物车的数量
     var number = products[ind] + 1;
+    var price = 0;
+    var rec = that.data.rec;
     //计数
     var sum = 0;
     if (number > 0) {
@@ -243,11 +261,19 @@ Page({
           }
         }
       }
-
-
     } else {
 
     }
+    for (var i = 0; i < rec.length; i++) {
+      for (var j = 0; j < rec[i].info.length; j++) {
+        if (rec[i].info[j].checked) {
+          price += rec[i].info[j].price * rec[i].info[j].pNum;
+        }
+      }
+    }
+    that.setData({
+      price: price
+    });
   },
   jump:function(e){
     var pid = pId[e.currentTarget.dataset.url];
@@ -259,6 +285,8 @@ Page({
     var that = this;
     var ind = e.currentTarget.dataset.ind;
     var carid = carId[ind];
+    var rec = that.data.rec;
+    var price = 0;
     wx.request({
       url: "https://www.jin321.cn/jin321/wx/deleteChart.do",
       method:"POST",
@@ -266,7 +294,6 @@ Page({
         chartid:carid
       },
       success:function(res){
-        var rec = that.data.rec;
         if(res.data.code == 1){
           for (var k = 0; k < rec.length; k++) {
             var q = 0;
@@ -292,11 +319,34 @@ Page({
         }
       }
     })
+    for (var i = 0; i < rec.length; i++) {
+      for (var j = 0; j < rec[i].info.length; j++) {
+        if (rec[i].info[j].checked) {
+          price += rec[i].info[j].price * rec[i].info[j].pNum;
+        }
+      }
+    }
+    that.setData({
+      price: price
+    });
   },
   remove: function(arr, val) {
+    var that = this;
+    var rec = that.data.rec;
+    var price = 0;
     for (var i = 0; i < arr.length; i++) {
       if (arr[i] == val) {
         arr.splice(i, 1);
+        for (var i = 0; i < rec.length; i++) {
+          for (var j = 0; j < rec[i].info.length; j++) {
+            if (rec[i].info[j].checked) {
+              price += rec[i].info[j].price * rec[i].info[j].pNum;
+            }
+          }
+        }
+        that.setData({
+          price: price
+        });
         break;
       }
     }
@@ -306,6 +356,7 @@ Page({
     var checked = e.currentTarget.dataset.checked;
     var that = this;
     var rec = that.data.rec;
+    var price = 0;
     if(!checked){
       for (var i = 0; i < rec.length; i++) {
         if (controller == i) {
@@ -316,9 +367,20 @@ Page({
           that.setData({
             rec: rec
           });
-          break;
         }
       }
+      for(var i = 0;i < rec.length;i++){
+        for(var j = 0;j < rec[i].info.length;j++){
+          if(rec[i].info[j].checked){
+            console.log(rec[i].info[j].price);
+            console.log(rec[i].info[j].pNum);
+            price += rec[i].info[j].price * rec[i].info[j].pNum;
+          }
+        }
+      }
+      that.setData({
+        price:price
+      });
     }else{
       for (var i = 0; i < rec.length; i++) {
         if (controller == i) {
@@ -329,10 +391,48 @@ Page({
           that.setData({
             rec: rec
           });
-          break;
+        }
+      }
+      for (var i = 0; i < rec.length; i++) {
+        for (var j = 0; j < rec[i].info.length; j++) {
+          if (rec[i].info[j].checked) {
+            price += rec[i].info[j].price * rec[i].info[j].pNum;
+          }
+        }
+      }
+      console.log(price);
+      that.setData({
+        price: price
+      });
+    }
+  },
+  check2(e){
+    var that = this;
+    var price = 0;
+    var rec = that.data.rec;
+    var big = e.currentTarget.dataset.i;
+    var small = e.currentTarget.dataset.j;
+    rec[big].info[small].checked = !rec[big].info[small].checked;
+    for (var i = 0; i < rec.length; i++) {
+      for (var j = 0; j < rec[i].info.length; j++) {
+        if (rec[i].info[j].checked) {
+          price += rec[i].info[j].price * rec[i].info[j].pNum;
         }
       }
     }
+    that.setData({
+      price: price
+    });
+    that.setData({
+      rec: rec
+    });
+  },
+  order(e){
+    var that = this;
+    var rec = that.data.rec;
+    var price = that.data.price;
+    wx.navigateTo({
+      url: '../order/order?rec='+rec+'&price='+price,
+    })
   }
-
 })

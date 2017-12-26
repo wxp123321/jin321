@@ -35,7 +35,7 @@
 .gray{
   width: 100%;
   height: 30rpx;
-  background: #ddd;
+  background: #fafafa;
 }
 
 .store{
@@ -62,19 +62,23 @@
 .s-info{
   width: 100%;
   height: 248rpx;
-  background: #ddd;
+  background: #fafafa;
+  font-size: 32rpx;
+  font-weight: bold;
+  position: relative;
 }
 
 .s-img{
-  width: 200rpx;
-  height: 150rpx;
+  width: 150rpx;
+  height: 200rpx;
+  margin-top: 26rpx;
+  margin-left: 50rpx;
 }
 
 .distribution{
   width: 100%;
   height: 108rpx;
   line-height: 108rpx;
-  border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   font-size: 32rpx;
   font-weight: bold;
@@ -141,7 +145,7 @@
 }
 
 .pay-view text{
-  margin-left: 260rpx;
+  margin-left: 180rpx;
 }
 
 .submit{
@@ -156,3 +160,27 @@
   background: linear-gradient(to right,#ffa800,#ffcd16); /* 标准的语法 */
 }
 
+.name{
+  position: absolute;
+  left: 262rpx;
+  top:36rpx;
+}
+
+.svalue{
+  position: absolute;
+  left: 262rpx;
+  top:76rpx;
+}
+
+.price{
+  position: absolute;
+  left: 262rpx;
+  bottom: 36rpx;
+  color: #ff1700;
+}
+
+.number{
+  position: absolute;
+  right: 50rpx;
+  bottom: 36rpx;
+}

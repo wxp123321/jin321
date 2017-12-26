@@ -15,15 +15,16 @@
     <image class='colorband' src='../../images/colorband.png'></image>
   </view>
   <view class='gray'></view>
-  <view>
+  <view wx:for='{{rec}}'>
     <view class='store'>
-      <text class='storeName'>{{storeName}}</text>
+      <text class='storeName'>{{item.mall}}</text>
     </view>
-    <view class='s-info'>
-      <image src='' class='s-img'></image>
-      <text class='name'>{{}}</text>
-      <text class='price'>{{}}</text>
-      <text class='number'>{{}}</text>
+    <view class='s-info' wx:for='{{item.info}}'>
+      <image src='{{item.url}}' class='s-img'></image>
+      <text class='name'>{{item.name}}</text>
+      <text class='svalue'>{{item.svalue}}</text>
+      <text class='price'>￥{{item.price}}</text>
+      <text class='number'>{{item.num}}</text>
     </view>
     <view class='distribution'>
       <text class='distribution-text'>配送方式</text>
@@ -31,16 +32,16 @@
     </view>
     <view class='message'>
       <text>买家留言：</text>
-      <input></input>
+      <input data-mall='{{item.mall}}' bindinput='getMessage'></input>
     </view>
     <view class='sm-price'>
-      <text class='sm-number'>共1件商品</text>
-      <text class='sm-allprice'>小计: ￥1.00</text>
+      <text class='sm-number'>共{{item.num}}件商品</text>
+      <text class='sm-allprice'>小计: ￥{{item.price}}</text>
     </view>
   </view>
   <view class='box'></view>
   <view class='pay-view'>
-    <text>合计 ￥1.00</text>
-    <view class='submit'>提交订单</view>
+    <text>合计 ￥{{price}}</text>
+    <view bindtap='buy' class='submit'>提交订单</view>
   </view>
 </view>

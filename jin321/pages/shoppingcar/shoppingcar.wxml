@@ -5,7 +5,7 @@
   </view>
   <!-- 选择商城中的产品 -->
   <view class='products' wx:for="{{item.info}}">
-    <checkbox checked="{{item.checked}}" class='choose-products'><image catchtap='jump' class="products-pic" data-url="{{item.url}}" src='{{item.url}}'></image></checkbox>
+    <checkbox data-price='{{item.price}}' data-i='{{item.i}}' data-j='{{item.j}}' data-num='{{item.pNum}}' checked="{{item.checked}}" bindtap='check2' class='choose-products'><image catchtap='jump' class="products-pic" data-url="{{item.url}}" src='{{item.url}}'></image></checkbox>
     <icon bindtap='delete' data-ind="{{item.ind}}" class="detle-product" type='cancel'></icon>
     <text class='productName'>{{item.pname}}</text>
     <text class="sizeName">规格: {{item.sizeName}}</text>
@@ -17,4 +17,9 @@
     </view>
   </view>
   <view class="one-box"></view> 
+</view>
+<view class='box'></view>
+<view class='pay-view'>
+    <text>合计 ￥{{price}}</text>
+    <view bindtap='order' class='submit'>提交订单</view>
 </view>
