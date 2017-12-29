@@ -77,12 +77,41 @@ Page({
       })
       
     }else if(options.code == 2){
-      wx.getStorage({
-        key: 'userid',
-        success: function(res) {
-          
-        },
-      })
+      //从购物车点击
+      var rec = options.rec;
+      var newData = [];
+      var index = 0;
+      for(var i = 0;i<rec.length;i++){
+        var info = [];
+        //每个商家小计价格
+        var price = 0;
+        for(var j = 0;j<rec[i].info.length;j++){
+          if (rec[i].info[j].checked){
+            var data = {
+              url: rec[i].info[j].url,
+              name: rec[i].info[j].pname,
+              svalue: rec[i].info[j].sizeName,
+              price: rec[i].info[j].pssellprice,
+              num: 'X'+rec[i].info[j].pnumber
+            }
+            price += rec[i].info[j].pssellprice * rec[i].info[j].pnumber;
+            info.push(data);
+          }else if(j == rec[i].info.length-1&&info.length>0){
+            newData[index] = {
+              mall:rec[i].mall,
+              price:price,
+              info:info
+            }
+            index++;
+          }
+        }
+      }
+      that.setData({
+        rec:newData
+      });
+      that.setData({
+        price:options.price
+      });
     }
   },
 

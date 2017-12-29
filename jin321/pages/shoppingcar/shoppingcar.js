@@ -431,8 +431,14 @@ Page({
     var that = this;
     var rec = that.data.rec;
     var price = that.data.price;
-    wx.navigateTo({
-      url: '../order/order?rec='+rec+'&price='+price,
-    })
+    for (var i = 0; i < rec.length; i++) {
+      for (var j = 0; j < rec[i].info.length; j++) {
+        if (rec[i].info[j].checked) {
+          wx.navigateTo({
+            url: '../order/order?rec=' + rec + '&price=' + price + '&code=2',
+          })
+        }
+      }
+    }
   }
 })
