@@ -17,18 +17,16 @@ Page({
     wx.getStorage({
       key: 'username',
       success: function (res) {
-        console.log(res.data);
         that.setData({
-          username: res.data
+          username: res.data.slice(0,6)
         });
       },
     });
     wx.getStorage({
       key: 'avatarUrl',
       success: function (res) {
-        console.log(res.data);
         that.setData({
-          myportrait: res.data
+          myportrait: res.data.slice
         })
       },
     });

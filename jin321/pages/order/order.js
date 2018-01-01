@@ -15,9 +15,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    username:'张鑫',
-    phoneNumber:12345678909,
-    address:'山西省太原市尖草坪区中北大学',
+    username:'',
+    phoneNumber:'',
+    address:'',
     res:[],
     price:0,
     orderformproducts:[]
@@ -67,11 +67,11 @@ Page({
             price:price
           });
           that.setData({
-            orderformproducts:[{
-              pid:pid,
-              sid:sid,
-              pamount:1
-            }]
+            orderformproducts: [[{
+              pid: pid,
+              sid: sid,
+              pamount: 1
+            }]]
           });
         }
       })
@@ -81,6 +81,8 @@ Page({
       var rec = options.rec;
       var newData = [];
       var index = 0;
+      //存放pid sid
+      var arr = [];
       for(var i = 0;i<rec.length;i++){
         var info = [];
         //每个商家小计价格
@@ -94,7 +96,13 @@ Page({
               price: rec[i].info[j].pssellprice,
               num: 'X'+rec[i].info[j].pnumber
             }
+            var json = {
+              pid:rec[i].info[j].pid,
+              sid:rec[i].info[j].sid,
+              pamount: rec[i].info[j].pnumber
+            }
             price += rec[i].info[j].pssellprice * rec[i].info[j].pnumber;
+            arr.push(json);
             info.push(data);
           }else if(j == rec[i].info.length-1&&info.length>0){
             newData[index] = {
@@ -111,6 +119,9 @@ Page({
       });
       that.setData({
         price:options.price
+      });
+      that.setData({
+        orderformproducts:arr
       });
     }
   },
@@ -178,10 +189,10 @@ Page({
             var data = res.data.useraddresses[0];
             uaid = res.data.useraddresses[0].uaid;
             that.setData({
-              username: data.ubname
+              username: data.ubname.slice(0,6)
             });
             that.setData({
-              phoneNumber: data.uphonenum
+              phoneNumber: data.uphonenum.slice(0,12)
             });
             var value = data.uprovince + data.ucity + data.uarea + data.uaddress;
             that.setData({
@@ -194,45 +205,58 @@ Page({
   },
   buy(e){
     var that = this;
-    var userid = 0;
-    wx.getStorage({
-      key: 'userid',
-      success: function(res) {
-        userid = res.data;
-      }
-    });
-    wx.getStorage({
-      key: 'mysession',
-      success: function(res) {
-        wx.request({
-          url: 'https://www.jin321.cn/jin321/wx/insertOrder.do',
-          method:'POST',
-          data:{
-            uid:userid,
-            uaid:uaid,
-            omessage:'',
-            session:res.data,
-            orderformproducts: that.data.orderformproducts
-          },
-          success:function(res){
-            wx.requestPayment({
-              timeStamp: res.data.timeStamp+'',
-              nonceStr: res.data.nonceStr,
-              package: res.data.package,
-              signType:'MD5',
-              paySign:res.data.paySign,
-              success:function(res){
-                console.log(res);
-              },
-              fail:function(err){
-                console.log(err);
-              }
-            });
-          }
-        })
-      },
-    })
+    if(that.data.phoneNumber){
+      var userid = 0;
+      var session = '';
+      var rec = that.data.rec;
+      var orderNumber = rec.length;
+      wx.getStorage({
+        key: 'userid',
+        success: function (res) {
+          userid = res.data;
+          wx.getStorage({
+            key: 'mysession',
+            success: function (res) {
+              session = res.data;
+              wx.request({
+                url: 'https://www.jin321.cn/jin321/wx/insertOrder.do',
+                method: 'POST',
+                data: {
+                  uid: userid,
+                  uaid: uaid,
+                  omessage: '',
+                  session: session,
+                  orderformproducts: that.data.orderformproducts
+                },
+                success: function (res) {
+                  wx.requestPayment({
+                    timeStamp: res.data.timeStamp + '',
+                    nonceStr: res.data.nonceStr,
+                    package: res.data.package,
+                    signType: 'MD5',
+                    paySign: res.data.paySign,
+                    success: function (res) {
+                      console.log(res);
+                    },
+                    fail: function (err) {
+                      console.log(err);
+                    }
+                  });
+                }
+              })
+            },
+          })
+        }
+      });
+    }else{
+      wx.showToast({
+        title: '请填写收货地址',
+        image: '../../images/warn.png',
+        duration: 500
+      })
+    }
   },
+  //获取买家留言
   getMessage(e){
     var mall = e.currentTarget.dataset.mall;
     message[mall] = e.detail.value;

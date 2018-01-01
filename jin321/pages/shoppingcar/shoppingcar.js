@@ -58,6 +58,8 @@ Page({
                     pNum: res.data.chartDetail[i].chartDetails[j].pnumber,
                     ind: ind,
                     checked: false,
+                    pid: res.data.chartDetail[i].chartDetails[j].pid,
+                    sid: res.data.chartDetail[i].chartDetails[j].sid,
                     i:i,
                     j:j
                   }
@@ -120,6 +122,8 @@ Page({
                     pNum: res.data.chartDetail[i].chartDetails[j].pnumber,
                     ind: ind,
                     checked: false,
+                    pid: res.data.chartDetail[i].chartDetails[j].pid,
+                    sid: res.data.chartDetail[i].chartDetails[j].sid,
                     i:i,
                     j:j
                   }
