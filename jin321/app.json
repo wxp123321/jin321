@@ -10,7 +10,8 @@
     "pages/address/address",
     "pages/test/test",
     "pages/addAddress/addAddress",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/selectAddress/selectAddress"
   ],
   "window":{
     "backgroundTextStyle":"light",

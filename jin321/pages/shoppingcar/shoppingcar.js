@@ -438,8 +438,15 @@ Page({
     for (var i = 0; i < rec.length; i++) {
       for (var j = 0; j < rec[i].info.length; j++) {
         if (rec[i].info[j].checked) {
-          wx.navigateTo({
-            url: '../order/order?rec=' + rec + '&price=' + price + '&code=2',
+          wx.setStorage({
+            key: 'rec',
+            data: rec,
+            success:function(res){
+              wx.navigateTo({
+                url: '../order/order?price=' + price + '&code=2',
+              })
+              return;
+            }
           })
         }
       }

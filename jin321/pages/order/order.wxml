@@ -1,5 +1,5 @@
 <view>
-  <view class='info'>
+  <view class='info' bindtap='selectAddress'>
     <view class='one-info'>
       <text>收货人</text>
       <text class='username'>{{username}}</text>

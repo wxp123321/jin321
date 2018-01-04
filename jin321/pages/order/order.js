@@ -20,7 +20,11 @@ Page({
     address:'',
     res:[],
     price:0,
-    orderformproducts:[]
+    orderformproducts:[],
+    code:0,
+    pass:{
+      
+    }
   },
 
   /**
@@ -29,6 +33,9 @@ Page({
   onLoad: function (options) {
     this.getInfo();
     var that = this;
+    that.setData({
+      code:options.code
+    });
     if(options.code == 1){
       //从详情页面点击
       var pid = options.pid;
@@ -37,6 +44,16 @@ Page({
       var price = options.price;
       var title = options.title;
       var dname = options.dname;
+      that.setData({
+        pass:{
+          sid: sid,
+          pid: pid,
+          svalue: svalue,
+          title: title,
+          dname: dname,
+          price:price
+        }
+      });
       var url = '';
       var rec = [];
       message[dname] = '';
@@ -67,18 +84,18 @@ Page({
             price:price
           });
           that.setData({
-            orderformproducts: [[{
+            orderformproducts: [{
               pid: pid,
               sid: sid,
               pamount: 1
-            }]]
+            }]
           });
         }
       })
       
     }else if(options.code == 2){
       //从购物车点击
-      var rec = options.rec;
+      var rec = wx.getStorageSync('rec');
       var newData = [];
       var index = 0;
       //存放pid sid
@@ -89,28 +106,31 @@ Page({
         var price = 0;
         for(var j = 0;j<rec[i].info.length;j++){
           if (rec[i].info[j].checked){
+            console.log('checked');
             var data = {
               url: rec[i].info[j].url,
               name: rec[i].info[j].pname,
               svalue: rec[i].info[j].sizeName,
-              price: rec[i].info[j].pssellprice,
-              num: 'X'+rec[i].info[j].pnumber
+              price: rec[i].info[j].price,
+              num: 'X'+rec[i].info[j].pNum
             }
             var json = {
               pid:rec[i].info[j].pid,
               sid:rec[i].info[j].sid,
-              pamount: rec[i].info[j].pnumber
+              pamount: rec[i].info[j].pNum
             }
-            price += rec[i].info[j].pssellprice * rec[i].info[j].pnumber;
+            price += rec[i].info[j].price * rec[i].info[j].pNum;
             arr.push(json);
             info.push(data);
-          }else if(j == rec[i].info.length-1&&info.length>0){
-            newData[index] = {
-              mall:rec[i].mall,
-              price:price,
-              info:info
+            if (j == rec[i].info.length - 1 && info.length > 0) {
+              console.log('aaa');
+              newData[index] = {
+                mall: rec[i].mall,
+                price: price,
+                info: info
+              }
+              index++;
             }
-            index++;
           }
         }
       }
@@ -210,6 +230,7 @@ Page({
       var session = '';
       var rec = that.data.rec;
       var orderNumber = rec.length;
+      console.log(that.data.orderformproducts);
       wx.getStorage({
         key: 'userid',
         success: function (res) {
@@ -260,5 +281,18 @@ Page({
   getMessage(e){
     var mall = e.currentTarget.dataset.mall;
     message[mall] = e.detail.value;
+  },
+  selectAddress(){
+    var that = this;
+    if(that.data.code == 1){
+      var pass = that.data.pass;
+      wx.navigateTo({
+        url: '../selectAddress/selectAddress?pid=' + pass.pid + '&sid=' + pass.sid + '&svalue=' + pass.svalue + '&title=' + pass.title + '&price=' + pass.price + '&dname=' + pass.dname + '&code=1',
+      })
+    }else{
+      wx.navigateTo({
+        url: '../selectAddress/selectAddress?rec='+that.data.rec+'&code=2',
+      })
+    }
   }
 })
