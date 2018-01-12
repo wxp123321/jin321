@@ -11,44 +11,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    wx.getStorage({
-      key: 'userid',
-      success: function(res) {
-        wx.request({
-          url: "https://www.jin321.cn/jin321/wx/selectUseraddressByuid.do",
-          method:"POST",
-          data:{
-            uid:res.data
-          },
-          success:function(res){
-            var address = [];
-            for (var i = 0; i < res.data.useraddresses.length;i++){
-              if(i > 0){
-                address[i] = {
-                  address: res.data.useraddresses[i].uprovince + res.data.useraddresses[i].ucity + res.data.useraddresses[i].uarea + res.data.useraddresses[i].uaddress,
-                  username: res.data.useraddresses[i].ubname,
-                  phoneNumber: res.data.useraddresses[i].uphonenum,
-                  checked: false,
-                  id:res.data.useraddresses[i].uaid
-                }
-              }else{
-                address[i] = {
-                  address: res.data.useraddresses[i].uprovince + res.data.useraddresses[i].ucity + res.data.useraddresses[i].uarea + res.data.useraddresses[i].uaddress,
-                  username: res.data.useraddresses[i].ubname,
-                  phoneNumber: res.data.useraddresses[i].uphonenum,
-                  checked: true,
-                  id: res.data.useraddresses[i].uaid
-                }
-              }
-            }
-            that.setData({
-              address:address
-            })
-          }
-        })
-      },
-    })
+    this.getAddress();
   },
 
   /**
@@ -62,7 +25,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.getAddress();
   },
 
   /**
@@ -109,7 +72,6 @@ Page({
         uaid:uaid
       },
       success:function(res){
-        console.log(res);
         wx.getStorage({
           key: 'userid',
           success: function (res) {
@@ -120,29 +82,12 @@ Page({
                 uid: res.data
               },
               success: function (res) {
-                var address = [];
-                for (var i = 0; i < res.data.useraddresses.length; i++) {
-                  if (i > 0) {
-                    address[i] = {
-                      address: res.data.useraddresses[i].uprovince + res.data.useraddresses[i].ucity + res.data.useraddresses[i].uarea + res.data.useraddresses[i].uaddress,
-                      username: res.data.useraddresses[i].ubname,
-                      phoneNumber: res.data.useraddresses[i].uphonenum,
-                      checked: false,
-                      id: res.data.useraddresses[i].uaid
-                    }
-                  } else {
-                    address[i] = {
-                      address: res.data.useraddresses[i].uprovince + res.data.useraddresses[i].ucity + res.data.useraddresses[i].uarea + res.data.useraddresses[i].uaddress,
-                      username: res.data.useraddresses[i].ubname,
-                      phoneNumber: res.data.useraddresses[i].uphonenum,
-                      checked: true,
-                      id: res.data.useraddresses[i].uaid
-                    }
-                  }
-                }
-                that.setData({
-                  address: address
-                })
+                wx.showToast({
+                  title: '删除地址成功',
+                  icon: 'success',
+                  duration: 500
+                });
+                that.getAddress();
               }
             })
           },
@@ -153,6 +98,46 @@ Page({
   addAddress:function(){
     wx.navigateTo({
       url: '../addAddress/addAddress',
+    })
+  },
+  getAddress() {
+    var that = this;
+    wx.getStorage({
+      key: 'userid',
+      success: function (res) {
+        wx.request({
+          url: "https://www.jin321.cn/jin321/wx/selectUseraddressByuid.do",
+          method: "POST",
+          data: {
+            uid: res.data
+          },
+          success: function (res) {
+            var address = [];
+            for (var i = 0; i < res.data.useraddresses.length; i++) {
+              if (i > 0) {
+                address[i] = {
+                  address: res.data.useraddresses[i].uprovince + res.data.useraddresses[i].ucity + res.data.useraddresses[i].uarea + res.data.useraddresses[i].uaddress,
+                  username: res.data.useraddresses[i].ubname,
+                  phoneNumber: res.data.useraddresses[i].uphonenum,
+                  checked: false,
+                  id: res.data.useraddresses[i].uaid
+                }
+              } else {
+                address[i] = {
+                  address: res.data.useraddresses[i].uprovince + res.data.useraddresses[i].ucity + res.data.useraddresses[i].uarea + res.data.useraddresses[i].uaddress,
+                  username: res.data.useraddresses[i].ubname,
+                  phoneNumber: res.data.useraddresses[i].uphonenum,
+                  checked: true,
+                  id: res.data.useraddresses[i].uaid
+                }
+              }
+            }
+            that.setData({
+              address: address
+            })
+          }
+        })
+      },
     })
   }
 })
