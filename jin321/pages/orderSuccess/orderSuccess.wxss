@@ -1,0 +1,27 @@
+.success{
+  height: 210rpx;
+  width: 100%;
+  background: orange;
+}
+
+.successText{
+  line-height: 210rpx;
+  margin-left: 84rpx;
+  font-weight: bold;
+  color: white;
+}
+
+.orderInfo{
+  width: 100%;
+  padding: 30rpx 0 22rpx 0;
+  border-bottom:1px solid #ddd; 
+}
+
+.orderInfo text{
+  display: block;
+  margin-left: 84rpx;
+  padding-bottom: 16rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #707070;
+}
