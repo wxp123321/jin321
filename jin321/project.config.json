@@ -20,8 +20,12 @@
 			"current": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"game": {
 			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 13,
 			"list": [
 				{
 					"id": -1,
@@ -94,6 +98,17 @@
 					"name": "selectAddress",
 					"pathName": "pages/selectAddress/selectAddress",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "orderSuccess",
+					"pathName": "pages/orderSuccess/orderSuccess",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "myOrders",
+					"pathName": "pages/myOrders/myOrders"
 				}
 			]
 		}

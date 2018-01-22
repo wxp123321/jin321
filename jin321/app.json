@@ -11,7 +11,9 @@
     "pages/test/test",
     "pages/addAddress/addAddress",
     "pages/order/order",
-    "pages/selectAddress/selectAddress"
+    "pages/selectAddress/selectAddress",
+    "pages/orderSuccess/orderSuccess",
+    "pages/myOrders/myOrders"
   ],
   "window":{
     "backgroundTextStyle":"light",

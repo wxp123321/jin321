@@ -71,7 +71,7 @@ Page({
             'num': 1,
             'info': [{
               url: url,
-              name: title,
+              name: title.slice(0,14)+'...',
               svalue: svalue,
               price: price,
               num:'X1'
@@ -230,7 +230,6 @@ Page({
       var session = '';
       var rec = that.data.rec;
       var orderNumber = rec.length;
-      console.log(that.data.orderformproducts);
       wx.getStorage({
         key: 'userid',
         success: function (res) {
@@ -256,8 +255,11 @@ Page({
                     package: res.data.package,
                     signType: 'MD5',
                     paySign: res.data.paySign,
-                    success: function (res) {
+                    success: function (res){
                       console.log(res);
+                      wx.navigateTo({
+                        url: '../orderSuccess/orderSuccess?address='+that.data.address+'&name='+that.data.username
+                      })
                     },
                     fail: function (err) {
                       console.log(err);
