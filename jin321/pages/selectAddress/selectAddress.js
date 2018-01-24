@@ -7,7 +7,8 @@ Page({
     info:[],
     pass:'',
     code:0,
-    rec:[]
+    rec:[],
+    oid:''
   },
 
   /**
@@ -26,9 +27,14 @@ Page({
           price: options.price
         }
       });
-    }else{
+    }else if(options.code == 2){
       that.setData({
         rec:options.rec
+      });
+    }else{
+      console.log(options.oid);
+      that.setData({
+        oid:options.oid
       });
     }
     that.setData({
@@ -129,14 +135,19 @@ Page({
         uaid:e.currentTarget.dataset.uaid
       },
       success:function(res){
-        if(res.data.code){
+        if(that.data.code == 1){
           var pass = that.data.pass;
           wx.navigateTo({
             url: '../order/order?pid=' + pass.pid + '&sid=' + pass.sid + '&svalue=' + pass.svalue + '&title=' + pass.title + '&price=' + pass.price + '&dname=' + pass.dname+'&code=1',
           })
-        }else{
+        }else if(that.data.code == 2){
           wx.navigateTo({
-            url: '../selectAddress/selectAddress?rec=' + that.data.rec + '&code=2',
+            url: '../order/order?rec=' + that.data.rec + '&code=2',
+          })
+        }else{
+          console.log('返回');
+          wx.navigateTo({
+            url: '../order/order?code=3&oid='+that.data.oid,
           })
         }
       }

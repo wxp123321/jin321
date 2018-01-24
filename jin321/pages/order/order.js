@@ -24,7 +24,8 @@ Page({
     code:0,
     pass:{
       
-    }
+    },
+    oid:''
   },
 
   /**
@@ -123,7 +124,6 @@ Page({
             arr.push(json);
             info.push(data);
             if (j == rec[i].info.length - 1 && info.length > 0) {
-              console.log('aaa');
               newData[index] = {
                 mall: rec[i].mall,
                 price: price,
@@ -143,6 +143,62 @@ Page({
       that.setData({
         orderformproducts:arr
       });
+    }else{
+      //从订单页面点击
+      console.log(options.oid);
+      that.setData({
+        code:options.code
+      });
+      that.setData({
+        oid:options.oid
+      });
+      wx.request({
+        url: 'https://www.jin321.cn/jin321/wx/selectOrderByoid.do',
+        method:'POST',
+        data:{
+          oid:options.oid
+        },
+        success:function(res){
+          var address = res.data.useraddress.uprovince + res.data.useraddress.ucity + res.data.useraddress.uarea + res.data.useraddress.uaddress;
+          var username = res.data.useraddress.ubname;
+          var phoneNumber = res.data.useraddress.uphonenum;
+          var rec = [];
+          that.setData({
+            address:address
+          });
+          that.setData({
+            username:username
+          });
+          that.setData({
+            phoneNumber:phoneNumber
+          });
+          var info = [];
+          var price = 0;
+          for (var j = 0; j < res.data.orderformProductPos.length;j++){
+            console.log('b');
+            info[j] = {
+              url: res.data.baseURL+res.data.orderformProductPos[j].ppicurl,
+              name: res.data.orderformProductPos[j].pname,
+              svalue: res.data.orderformProductPos[j].sizename,
+              price: res.data.orderformProductPos[j].pbuyprice,
+              num: 'X' + res.data.orderformProductPos[j].pamount
+            }
+            price += res.data.orderformProductPos[j].pbuyprice;
+          }
+          rec[0] = {
+            mall: '普普实业',
+            price: price,
+            info: info
+          }
+          console.log(rec);
+          that.setData({
+            rec:rec
+          });
+          that.setData({
+            price:price
+          });
+        }
+      })
     }
   },
 
@@ -225,7 +281,7 @@ Page({
   },
   buy(e){
     var that = this;
-    if(that.data.phoneNumber){
+    if(that.data.phoneNumber && that.data.code != 3){
       var userid = 0;
       var session = '';
       var rec = that.data.rec;
@@ -256,7 +312,6 @@ Page({
                     signType: 'MD5',
                     paySign: res.data.paySign,
                     success: function (res){
-                      console.log(res);
                       wx.navigateTo({
                         url: '../orderSuccess/orderSuccess?address='+that.data.address+'&name='+that.data.username
                       })
@@ -271,6 +326,38 @@ Page({
           })
         }
       });
+    }else if(that.data.code == 3){
+      wx.getStorage({
+        key: 'mysession',
+        success: function(res) {
+          var session = res.data;
+          wx.request({
+            url: 'https://www.jin321.cn/jin321/wx/payOrder.do',
+            method: 'POST',
+            data:{
+              oid:that.data.oid,
+              session:session
+            },
+            success:function(res){
+              wx.requestPayment({
+                timeStamp: res.data.timeStamp + '',
+                nonceStr: res.data.nonceStr,
+                package: res.data.package,
+                signType: 'MD5',
+                paySign: res.data.paySign,
+                success: function (res) {
+                  wx.navigateTo({
+                    url: '../orderSuccess/orderSuccess?address=' + that.data.address + '&name=' + that.data.username
+                  })
+                },
+                fail: function (err) {
+                  console.log(err);
+                }
+              });
+            }
+          })
+        },
+      })
     }else{
       wx.showToast({
         title: '请填写收货地址',
@@ -291,9 +378,13 @@ Page({
       wx.navigateTo({
         url: '../selectAddress/selectAddress?pid=' + pass.pid + '&sid=' + pass.sid + '&svalue=' + pass.svalue + '&title=' + pass.title + '&price=' + pass.price + '&dname=' + pass.dname + '&code=1',
       })
-    }else{
+    }else if(that.data.code == 2){
       wx.navigateTo({
         url: '../selectAddress/selectAddress?rec='+that.data.rec+'&code=2',
+      })
+    }else{
+      wx.navigateTo({
+        url: '../selectAddress/selectAddress?code=3&oid='+that.data.oid
       })
     }
   }

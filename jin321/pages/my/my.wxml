@@ -5,7 +5,7 @@
     <image class="myportrait" src='{{myportrait}}'></image>
   </view>
   <view class="s-box"></view>
-  <view class='order'>
+  <view class='order' bindtap='myOrder'>
     <image class='order-icon' src='../../images/order.png'></image>
     <text class="my-order">我的订单</text>
   </view>

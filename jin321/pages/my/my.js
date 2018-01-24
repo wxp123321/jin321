@@ -222,5 +222,10 @@ Page({
     wx.navigateTo({
       url: '../address/address',
     })
+  },
+  myOrder(){
+    wx.navigateTo({
+      url: '../myOrders/myOrders',
+    })
   }
 })
