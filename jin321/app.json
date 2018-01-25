@@ -13,7 +13,8 @@
     "pages/order/order",
     "pages/selectAddress/selectAddress",
     "pages/orderSuccess/orderSuccess",
-    "pages/myOrders/myOrders"
+    "pages/myOrders/myOrders",
+    "pages/logistics/logistics"
   ],
   "window":{
     "backgroundTextStyle":"light",
