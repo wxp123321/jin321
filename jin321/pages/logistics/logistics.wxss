@@ -1,0 +1,59 @@
+.header{
+  height: 200rpx;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+}
+
+.logisticsImg{
+  width: 120rpx;
+  height: 120rpx;
+  border: 1px solid #ddd;
+  margin: 40rpx 0 0 58rpx;
+}
+
+.orderText{
+  position: absolute;
+  top: 56rpx;
+  left: 212rpx;
+  font-size: 28rpx;
+  color: #ff4b02;
+  font-weight: bold;
+}
+
+.expressName{
+  position: absolute;
+  left: 212rpx;
+  top: 126rpx;
+  font-size: 20rpx;
+  font-weight: bold;
+  color: #cbcbcb;
+}
+
+.content{
+  width: 690rpx;
+  float: right;
+  border-left: 1px solid #ddd;
+  margin-top: 48rpx;
+}
+
+.step{
+  padding-bottom: 40rpx;
+}
+
+.expressInfo,
+.expressTime{
+  margin-left: 42rpx;
+  font-size: 20rpx;
+  font-weight: bold;
+  margin-top: 10rpx;
+  color: #b2b2b2;
+}
+
+.circle{
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  background: #b2b2b2;
+  margin-left: -7rpx;
+}
+

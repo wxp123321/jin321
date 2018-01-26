@@ -1,0 +1,16 @@
+<view>
+  <view class='header'>
+    <image src='{{imgurl}}' class='logisticsImg'></image>
+    <text class='orderText'>订单状态</text>
+    <text class='expressName'>{{expressName}}</text>
+  </view>
+  <view>
+    <view class='content'>
+      <view class='step' wx:for='{{express}}'>
+        <view class='circle'></view>
+        <view class='expressInfo'>{{item.remark}}</view>
+        <view class='expressTime'>{{item.datetime}}</view>
+      </view>
+    </view>
+  </view>
+</view>
