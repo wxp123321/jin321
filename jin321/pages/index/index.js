@@ -115,7 +115,7 @@ Page({
     time:"",
     killStyle:''
   },
-  onLoad:function(){
+  onLoad:function(options){
     var that = this;
     this.roast();
     wx.authorize({
@@ -316,35 +316,52 @@ Page({
         })
       },
       fail: function () {
-        wx.login({
-          success: function (res) {
-            console.log(res.code);
-            wx.request({
-              url: "https://www.jin321.cn/jin321/wx/login.do",
-              method: "POST",
-              data: {
-                "js_code": res.code
-              },
-              success: function (res) {
-                wx.setStorage({
-                  key: 'mysession',
-                  data: res.data.session
-                });
-                wx.setStorage({
-                  key: 'userid',
-                  data: res.data.userid
-                });
-                wx.setStorage({
-                  key: 'code',
-                  data: res.data.code
-                });
-              }
-            });
-          }
-        })
+        if(options.id){
+
+        }else{
+          wx.login({
+            success: function (res) {
+              wx.request({
+                url: "https://www.jin321.cn/jin321/wx/login.do",
+                method: "POST",
+                data: {
+                  "js_code": res.code
+                },
+                success: function (res) {
+                  wx.setStorage({
+                    key: 'mysession',
+                    data: res.data.session
+                  });
+                  wx.setStorage({
+                    key: 'userid',
+                    data: res.data.userid
+                  });
+                  wx.setStorage({
+                    key: 'code',
+                    data: res.data.code
+                  });
+                }
+              });
+            }
+          })
+        }
       }
     })
     
+  },
+
+  onShareAppMessage: function () {
+    var id = wx.getStorageSync('userid');
+    return {
+      title: 'jin321商城',
+      path: '/page/index?id='+id,
+      success: function (res) {
+        console.log(id);
+      },
+      fail: function (res) {
+        console.log('转发失败');
+      }
+    }
   },      
   
   roast:function(){
