@@ -25,7 +25,8 @@ Page({
     pass:{
       
     },
-    oid:''
+    oid:'',
+    did: ''
   },
 
   /**
@@ -45,6 +46,9 @@ Page({
       var price = options.price;
       var title = options.title;
       var dname = options.dname;
+      that.setData({
+        did: options.did
+      });
       that.setData({
         pass:{
           sid: sid,
@@ -145,7 +149,6 @@ Page({
       });
     }else{
       //从订单页面点击
-      console.log(options.oid);
       that.setData({
         code:options.code
       });
@@ -281,7 +284,7 @@ Page({
   },
   buy(e){
     var that = this;
-    if(that.data.phoneNumber && that.data.code != 3){
+    if(that.data.phoneNumber && that.data.code == 1){
       var userid = 0;
       var session = '';
       var rec = that.data.rec;
@@ -294,16 +297,17 @@ Page({
             key: 'mysession',
             success: function (res) {
               session = res.data;
+              var data = [{
+                uid: userid,
+                did: that.data.did,
+                uaid: uaid,
+                session: session,
+                orderformproducts: that.data.orderformproducts
+              }]
               wx.request({
                 url: 'https://www.jin321.cn/jin321/wx/insertOrder.do',
                 method: 'POST',
-                data: {
-                  uid: userid,
-                  uaid: uaid,
-                  omessage: '',
-                  session: session,
-                  orderformproducts: that.data.orderformproducts
-                },
+                data: data,
                 success: function (res) {
                   wx.requestPayment({
                     timeStamp: res.data.timeStamp + '',
@@ -326,7 +330,63 @@ Page({
           })
         }
       });
-    }else if(that.data.code == 3){
+    } else if (that.data.phoneNumber && that.data.code == 2){
+      var userid = 0;
+      var session = '';
+      var rec = that.data.rec;
+      var orderNumber = rec.length;
+      var data = []
+
+      wx.getStorage({
+        key: 'userid',
+        success: function (res) {
+          userid = res.data;
+          wx.getStorage({
+            key: 'mysession',
+            success: function (res) {
+              session = res.data;
+              wx.getStorage({
+                key: 'rec',
+                success: function(res) {
+                  for(var i = 0; i<res.data.length;i++){
+                    data[i] = {
+                      uid: userid,
+                      did: res.data[i].did,
+                      uaid: uaid,
+                      session: session,
+                      orderformproducts: that.data.orderformproducts
+                    }
+                  }
+                  wx.request({
+                    url: 'https://www.jin321.cn/jin321/wx/insertOrder.do',
+                    method: 'POST',
+                    data: data,
+                    success: function (res) {
+                      wx.requestPayment({
+                        timeStamp: res.data.timeStamp + '',
+                        nonceStr: res.data.nonceStr,
+                        package: res.data.package,
+                        signType: 'MD5',
+                        paySign: res.data.paySign,
+                        success: function (res) {
+                          wx.navigateTo({
+                            url: '../orderSuccess/orderSuccess?address=' + that.data.address + '&name=' + that.data.username
+                          })
+                        },
+                        fail: function (err) {
+                          console.log(err);
+                        }
+                      });
+                    }
+                  })
+                },
+              })
+            },
+          })
+        }
+      });
+
+    } else if (that.data.phoneNumber && that.data.code == 3){
       wx.getStorage({
         key: 'mysession',
         success: function(res) {

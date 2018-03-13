@@ -18,6 +18,9 @@
   </view>
   <view class="one-box"></view> 
 </view>
+<view wx:if="{{!rec.length}}">
+    <image src='../../images/loading.gif' class='loading'></image>
+</view>
 <view class='box'></view>
 <view class='pay-view'>
     <text>合计 ￥{{price}}</text>

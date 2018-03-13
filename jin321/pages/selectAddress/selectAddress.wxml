@@ -1,0 +1,13 @@
+<view>
+  <view class='usernameinfo-view' wx:for='{{info}}' bindtap='backOrder' data-uaid='{{item.uaid}}'>
+    <view class='username'>
+      <text>{{item.username}}</text>
+      <text class='phoneNumber'>{{item.phoneNumber}}</text>
+    </view>
+    <view class='info'>
+      <text class='default' wx:if='{{item.default}}'>{{item.default}}</text><text>{{item.address}}</text>
+    </view>
+  </view>
+  <view class='one-big-box'></view>
+  <view class="add-address" bindtap='addAddress'>添加新地址</view>
+</view>

@@ -76,37 +76,16 @@ var timeDate = function(time){
 Page({
   data: {
     //轮播图图片
-    imgUrls: [
-      "../../images/white.png"
-    ],
-    time:{
-
-    },
+    imgUrls: [],
+    time:{},
     //秒杀第一个图
-    killpicf:"../../images/white.png",
+    killpicf:"",
     killpicfprice:"",
     newkillpicfprice:"",
     //秒杀图片
-    killpicUrl:[
-      {
-        url:"../../images/white.png",
-        // timestart:"",
-        // timeend:"",
-        psoriprice:"",
-        pssellprice:""
-      }
-    ],
+    killpicUrl:[],
      //合伙人图片
-    parentspic:[
-      //合伙人商品信息
-      {
-        url:"../../images/white.png",
-        pname:"",
-        psummary:"",
-        psoriprice:"",
-        pssellprice:""
-      }
-    ],
+    parentspic:[],
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
@@ -317,7 +296,34 @@ Page({
       },
       fail: function () {
         if(options.id){
-
+          console.log('转发登录开始');
+          wx.login({
+            success: function (res) {
+              wx.request({
+                url: "https://www.jin321.cn/jin321/wx/login.do",
+                method: "POST",
+                data: {
+                  "js_code": res.code,
+                  "lUserid":options.id
+                },
+                success: function (res) {
+                  console.log('转发登录成功');
+                  wx.setStorage({
+                    key: 'mysession',
+                    data: res.data.session
+                  });
+                  wx.setStorage({
+                    key: 'userid',
+                    data: res.data.userid
+                  });
+                  wx.setStorage({
+                    key: 'code',
+                    data: res.data.code
+                  });
+                }
+              });
+            }
+          })
         }else{
           wx.login({
             success: function (res) {
@@ -354,7 +360,7 @@ Page({
     var id = wx.getStorageSync('userid');
     return {
       title: 'jin321商城',
-      path: '/page/index?id='+id,
+      path: '/pages/index/index?id='+id,
       success: function (res) {
         console.log(id);
       },

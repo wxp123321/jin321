@@ -43,6 +43,7 @@ Page({
                 var info = [];
                 data[i] = {
                   mall: res.data.chartDetail[i].dname,
+                  did: res.data.chartDetail[i].did,
                   checked: false
                 }
                 for (var j = 0; j < res.data.chartDetail[i].chartDetails.length; j++ , ind++) {
@@ -107,6 +108,7 @@ Page({
                 var info = [];
                 data[i] = {
                   mall: res.data.chartDetail[i].dname,
+                  did: res.data.chartDetail[i].did,
                   checked: false
                 }
                 for (var j = 0; j < res.data.chartDetail[i].chartDetails.length; j++ , ind++) {
@@ -404,7 +406,6 @@ Page({
           }
         }
       }
-      console.log(price);
       that.setData({
         price: price
       });

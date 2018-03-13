@@ -16,34 +16,37 @@
   <!-- 轮播图 -->
   <view class='roasting'>
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-      <block wx:for="{{imgUrls}}">
+      <block wx:for="{{imgUrls}}" wx:if="{{imgUrls.length}}">
         <swiper-item>
           <image bindtap='jump' data-url="{{item}}" src="{{item}}" mode="{{mode}}" class="slide-image"/>
         </swiper-item>
       </block>
     </swiper>
+    <view wx:if="{{!imgUrls.length}}">
+      <image src='../../images/loading.gif' class='loading'></image>
+    </view>
   </view>
+  
 
 
   <!-- 限时秒杀 -->
-  <scroll-view class='{{killStyle}}' scroll-x="true">
+  <scroll-view class='{{killStyle}} scroll' scroll-x="true">
     <view class='second-kill'>
     <!-- 第一块内容 -->
     <view class='first-kill'>
       <image class='time-limit' src='../../images/kill.png'></image>
-      <!-- <text class="time">{{time.h}}:{{time.m}}:{{time.s}}</text> -->
-      <view class='kill-pic'>
+      <view class='kill-pic' wx:if="{{killpicf}}">
         <image bindtap='jump' data-url="{{killpicf}}" class="kill-pic-first" src='{{killpicf}}'></image>
       </view>
       <view class='kill-price'>
-        <text class="current-price">￥{{killpicfprice}}</text>
-        <text class="original-price">￥{{newkillpicfprice}}</text>
+        <text class="current-price" wx:if="{{killpicfprice}}">￥{{killpicfprice}}</text>
+        <text class="original-price" wx:if="newkillpicfprice">￥{{newkillpicfprice}}</text>
       </view>      
     </view>
     <!-- for循环秒杀 -->
-      <view class='other-kill' wx:for="{{killpicUrl}}">
+      <view class='other-kill' wx:for="{{killpicUrl}}" wx:if="{{killpicUrl}}">
         <view class='kill-pic other-kill-pic'>
-          <image bindtap='jump' data-url='{{item.url}}' wx:if="{{item.url}}" class="kill-pic-first" src='{{item.url}}'></image>
+          <image bindtap='jump' data-url='{{item.url}}' class="kill-pic-first" src='{{item.url}}'></image>
         </view>
         <view class='kill-price'>
           <text class="current-price">￥{{item.pssellprice}}</text>
@@ -51,11 +54,14 @@
         </view>
       </view>
   </view>
+  <view wx:if="{{!killpicf.length}}">
+    <image src='../../images/loading.gif' class='loading'></image>
+  </view>
   </scroll-view>
 
 
 
-  <view>
+  <view class='allPartnership'>
     <view class='partnership-shopping'>
       <image class='partnership-pic' src='../../images/partnership.png'></image>
     </view>
@@ -69,6 +75,9 @@
           <text class="product-price">￥{{item.psoriprice}}</text>
         </view>
       </view>
+    </view>
+    <view wx:if="{{!parentspic.length}}">
+      <image src='../../images/loading.gif' class='loading'></image>
     </view>
   </view>
 

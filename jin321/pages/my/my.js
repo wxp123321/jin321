@@ -227,5 +227,10 @@ Page({
     wx.navigateTo({
       url: '../myOrders/myOrders',
     })
+  },
+  myMoney(){
+    wx.navigateTo({
+      url: '../money/money',
+    })
   }
 })

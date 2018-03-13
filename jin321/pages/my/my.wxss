@@ -32,7 +32,8 @@
 .order,
 .address,
 .address,
-.commission{
+.commission,
+.we{
   width: 100%;
   height: 108rpx;
   position: relative;
@@ -48,7 +49,8 @@
 
 .my-order,
 .manage-address,
-.my-commission{
+.my-commission,
+.about-we{
   position: absolute;
   left: 188rpx;
   top: 35rpx;
@@ -57,12 +59,14 @@
 }
 
 .address,
-.commission{
+.commission,
+.we{
   border-bottom: 1px solid #f1f1f1; 
 }
 
 .address-icon,
-.commission-icon{
+.commission-icon,
+.we-icon{
   width: 62rpx;
   height: 62rpx;
   position: absolute;

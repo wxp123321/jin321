@@ -1,0 +1,36 @@
+.item{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1px solid #ddd; 
+  font-size: 34rpx;
+}
+
+.addressInput{
+  float: right;
+  margin-top: 27rpx;
+  width: 520rpx;
+}
+
+picker{
+  width: 520rpx;
+  float: right;
+  font-size: 28rpx;
+  color:#8b8b8b;
+}
+
+.item label{
+  margin-left: 48rpx;
+}
+
+.add-address{
+  width: 100%;
+  height: 140rpx;
+  background: red;
+  position: fixed;
+  bottom: 0;
+  color: white;
+  font-size: 32rpx;
+  line-height: 140rpx;
+  text-align: center;
+}

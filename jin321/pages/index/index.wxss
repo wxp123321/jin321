@@ -52,6 +52,19 @@ swiper{
   height: 120px;
 }
 
+.roasting{
+  position: relative
+}
+
+.loading{
+  width: 48rpx;
+  height: 48rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -24rpx 0 0 -34rpx;
+}
+
 .slide-image{
   width: 100%;
   height: 120px;
@@ -191,4 +204,14 @@ swiper{
 
 .timeBox{
   display: none;
+}
+
+.scroll{
+  position: relative;
+  width: 100%;
+  height: 242rpx;
+}
+
+.allPartnership{
+  position: relative
 }

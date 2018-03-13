@@ -29,4 +29,7 @@
 <view class="detailImg" wx:for="{{img}}">
   <image class="detailImg" src='{{item}}'></image>
 </view>
+<view wx:if="{{!imgUrls.length}}">
+  <image src='../../images/loading.gif' class='loading'></image>
+</view>
 <view class="box"></view>

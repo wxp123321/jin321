@@ -1,0 +1,37 @@
+<view>
+  <view class="item">
+    <label>收件人：</label>
+    <input class='addressInput' bindinput='getUsername' placeholder='姓名' placeholder-style="color:#8b8b8b;font-size:28rpx"></input>
+  </view>
+  <view class='item'>
+    <label>手机号：</label>
+    <input type='number' class='addressInput' bindinput='getPhoneNumber' placeholder='手机号' placeholder-style="color:#8b8b8b;font-size:28rpx"></input>
+  </view>
+  <view class='item'>
+    <label>邮编：</label>
+    <input class='addressInput' bindinput='getPostCode' type='number' placeholder='邮编' placeholder-style="color:#8b8b8b;font-size:28rpx"></input>
+  </view>
+  <view class='item'>
+    <label>省：</label>
+    <picker mode='selector' bindchange='getProvince' value="{{index}}" range='{{region}}'>
+      <text>{{region[index]}}</text>
+    </picker>
+  </view>
+  <view class='item'>
+    <label>市：</label>
+    <picker mode='selector' bindchange='getCity' value="{{index2}}" range='{{region2}}'>
+      <text>{{region2[index2]}}</text>
+    </picker>
+  </view>
+  <view class='item'>
+    <label>区/县：</label>
+    <picker mode='selector' bindchange='getCounty' value="{{index3}}" range='{{region3}}'>
+      <text>{{region3[index3]}}</text>
+    </picker>
+  </view>
+  <view class='item'>
+    <label>详细地址：</label>
+    <input class='addressInput' bindinput='getAddress' placeholder='街道地址' placeholder-style="color:#8b8b8b;font-size:28rpx"></input>
+  </view>
+  <view class="add-address" bindtap='addAddress'>确定</view>
+</view>

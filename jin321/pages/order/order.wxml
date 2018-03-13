@@ -39,6 +39,9 @@
       <text class='sm-allprice'>小计: ￥{{item.price}}</text>
     </view>
   </view>
+  <view wx:if="{{!rec.length}}">
+    <image src='../../images/loading.gif' class='loading'></image>
+  </view>
   <view class='box'></view>
   <view class='pay-view'>
     <text>合计 ￥{{price}}</text>

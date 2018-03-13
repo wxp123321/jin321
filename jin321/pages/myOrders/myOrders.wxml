@@ -1,0 +1,92 @@
+<view>
+  <view class='header'>
+    <text bindtap='all' class='{{all}}'>全部订单</text>
+    <text bindtap='noPay' class='{{noPay}}'>未付款</text>
+    <text bindtap='waitSend' class='{{waitSend}}'>待发货</text>
+    <text bindtap='waitRe' class='{{waitRe}}'>待收货</text>
+  </view>
+  <view class='box'></view>
+
+  <!-- 全部订单 -->
+  <view wx:for='{{orders}}'>
+    <view class='mall'>
+      <text>{{item.dname}}</text>
+    </view>
+    <view class='commodity' wx:for='{{item.orderformProductPos}}'>
+      <image wx:if='{{item.ppicurl}}' src='{{baseUrl}}{{item.ppicurl}}' class='s-img'></image>
+      <text class='s-name'>{{item.pname}}</text>
+      <text class='s-info'>{{item.psummary}}</text>
+      <text class='newprice'>￥{{item.pbuyprice}}</text>
+      <text class='number'>x{{item.pamount}}</text>
+    </view>
+    <view class='allPrice'>
+      <text>合计￥{{item.totalprice}}</text>
+    </view> 
+    <view class='fun'>
+      <view class='watch' bindtap='watch' data-oid='{{item.oid}}'>查看物流</view>
+      <view class='delOrder' data-oid='{{item.oid}}' bindtap='delOrder'>删除订单</view>
+    </view>
+  </view>
+
+  <!-- 未付款 -->
+  <view wx:for='{{noPayOrders}}'>
+    <view class='mall'>
+      <text>{{item.dname}}</text>
+    </view>
+    <view class='commodity' wx:for='{{item.orderformProductPos}}'>
+      <image wx:if='{{item.ppicurl}}' src='{{baseUrl}}{{item.ppicurl}}' class='s-img'></image>
+      <text class='s-name'>{{item.pname}}</text>
+      <text class='s-info'>{{item.psummary}}</text>
+      <text class='newprice'>￥{{item.pbuyprice}}</text>
+      <text class='number'>x{{item.pamount}}</text>
+    </view>
+    <view class='allPrice'>
+      <text>共1件商品</text>
+    </view> 
+    <view class='fun'>
+      <view class='watch' data-oid='{{item.oid}}' bindtap='order'>支付订单</view>
+      <view class='delOrder' data-oid='{{item.oid}}' bindtap='delOrder'>删除订单</view>
+    </view>
+  </view>
+
+  <!-- 待发货 -->
+  <view wx:for='{{noSend}}'>
+    <view class='mall'>
+      <text>{{item.dname}}</text>
+    </view>
+    <view class='commodity' wx:for='{{item.orderformProductPos}}'>
+      <image wx:if='{{item.ppicurl}}' src='{{baseUrl}}{{item.ppicurl}}' class='s-img'></image>
+      <text class='s-name'>{{item.pname}}</text>
+      <text class='s-info'>{{item.psummary}}</text>
+      <text class='newprice'>￥{{item.pbuyprice}}</text>
+      <text class='number'>x{{item.pamount}}</text>
+    </view>
+    <view class='allPrice'>
+      <text>共1件商品</text>
+    </view> 
+    <view class='fun'>
+      <view class='watch' bindtap='watch' data-oid='{{item.oid}}'>查看物流</view>
+    </view> 
+  </view>
+
+  <!-- 待收货 -->
+  <view wx:for='{{noRe}}'>
+    <view class='mall'>
+      <text>{{item.dname}}</text>
+    </view>
+    <view class='commodity' wx:for='{{item.orderformProductPos}}'>
+      <image wx:if='{{item.ppicurl}}' src='{{baseUrl}}{{item.ppicurl}}' class='s-img'></image>
+      <text class='s-name'>{{item.pname}}</text>
+      <text class='s-info'>{{item.psummary}}</text>
+      <text class='newprice'>￥{{item.pbuyprice}}</text>
+      <text class='number'>x{{item.pamount}}</text>
+    </view>
+    <view class='allPrice'>
+      <text>共1件商品</text>
+    </view> 
+    <view class='fun'>
+      <view class='watch' bindtap='watch' data-oid='{{item.oid}}'>查看物流</view>
+      <view class='already' bindtap='already' data-id='{{item.oid}}'>确认收货</view>
+    </view>
+  </view>
+</view>

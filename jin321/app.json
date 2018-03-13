@@ -14,7 +14,8 @@
     "pages/selectAddress/selectAddress",
     "pages/orderSuccess/orderSuccess",
     "pages/myOrders/myOrders",
-    "pages/logistics/logistics"
+    "pages/logistics/logistics",
+    "pages/money/money"
   ],
   "window":{
     "backgroundTextStyle":"light",

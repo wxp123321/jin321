@@ -1,0 +1,140 @@
+.header{
+  height: 100rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.header text{
+  display: inline-block;
+  font-size: 36rpx;
+  color: #ff4b02;
+  line-height: 100rpx;
+}
+
+.all{
+  border-bottom: 2px solid #ff4b02;
+}
+
+.noPay{
+  border-bottom: 2px solid #ff4b02;
+}
+
+.waitSend{
+  border-bottom: 2px solid #ff4b02;
+}
+
+.waitRe{
+  border-bottom: 2px solid #ff4b02;
+}
+
+.box{
+  width: 100%;
+  height: 20rpx;
+  background: #fafafa;
+}
+
+.mall{
+  height: 60rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.mall text{
+  margin-left: 30rpx;
+  line-height: 60rpx;
+}
+
+.commodity{
+  height: 200rpx;
+  width: 100%;
+  background: #fafafa;
+  position: relative;
+}
+
+.s-img{
+  width: 160rpx;
+  height: 160rpx;
+  background: yellow;
+  margin-left: 30rpx;
+  margin-top: 20rpx;
+}
+
+.commodity text{
+  font-size: 24rpx;
+  font-weight: bold;
+  display: inline-block;
+  margin-left: 16rpx;
+}
+
+.s-name{
+  position: absolute;
+  top: 30rpx;
+  max-width: 440rpx;
+}
+
+.s-info{
+  position: absolute;
+  top: 90rpx;
+  color: #707070;
+  max-width: 440rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.newprice{
+  position: absolute;
+  font-size: 28rpx;
+  top:56rpx;
+  right: 16rpx;
+}
+
+.number{
+  position: absolute;
+  top:80rpx;
+  right: 16rpx;
+  font-size: 28rpx;
+}
+
+.allPrice{
+  height: 80rpx;
+  font-size: 24rpx;
+  line-height: 80rpx;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+.allPrice text{
+  float: right;
+  margin-right: 10rpx;
+}
+
+.fun{
+  height: 100rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd; 
+}
+
+.fun view{
+  display: inline-block;
+  float: right;
+  margin-top: 24rpx;
+  border: 1px solid black;
+  padding: 10rpx;
+  border-radius: 30rpx;
+}
+
+.delOrder{
+  margin-right: 24rpx;
+}
+
+.watch{
+  margin-right: 42rpx;
+}
+
+
+
+
+

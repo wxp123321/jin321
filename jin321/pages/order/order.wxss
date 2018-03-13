@@ -185,3 +185,12 @@
   right: 50rpx;
   bottom: 36rpx;
 }
+
+.loading{
+  width: 48rpx;
+  height: 48rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -24rpx 0 0 -34rpx;
+}

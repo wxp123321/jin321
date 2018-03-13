@@ -110,6 +110,18 @@
 					"name": "myOrders",
 					"pathName": "pages/myOrders/myOrders",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "物流",
+					"pathName": "pages/logistics/logistics",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "佣金",
+					"pathName": "pages/money/money",
+					"query": ""
 				}
 			]
 		}
