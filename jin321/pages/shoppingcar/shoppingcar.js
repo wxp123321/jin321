@@ -71,7 +71,9 @@ Page({
                 rec: data
               });
             }else{
-              console.log("没商品");
+              that.setData({
+                rec: ['']
+              })
             }
           }
         })
