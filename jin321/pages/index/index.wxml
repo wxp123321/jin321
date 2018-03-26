@@ -70,7 +70,7 @@
         <image wx:if="{{item}}" class="productPos-pic" src='{{item.url}}'></image>
         <text class="big-product-text">{{item.pname}}</text>
         <text class="small-product-text">{{item.psummary}}</text>
-        <view class="p-price-box clearfix">
+        <view class="p-price-box">
           <text class='product-price-now'>￥{{item.pssellprice }}</text>
           <text class="product-price">￥{{item.psoriprice}}</text>
         </view>

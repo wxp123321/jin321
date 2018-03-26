@@ -4,13 +4,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    money: 0
+    money: 0,
+    moneyBox: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(new Date(1518164040000).toLocaleString());
     var that = this;
     wx.getStorage({
       key: 'userid',
@@ -23,8 +25,22 @@ Page({
           },
           success: function(res){
             if(res.data.length){
+              var money = 0;
+              var moneyBox = [];
+              for(var i = 0; i < res.data.length;i++){
+                money += res.data[i].paynum;
+                moneyBox[i] = {
+                  id: res.data[i].uid,
+                  date: new Date(res.data[i].paydate).toLocaleString(),
+                  message: res.data[i].paymsg,
+                  money: res.data[i].paynum
+                }
+              }
               that.setData({
-                money: res.data[0].paynum
+                money: money
+              });
+              that.setData({
+                moneyBox: moneyBox
               });
             }
           }

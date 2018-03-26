@@ -73,7 +73,6 @@ swiper{
 .second-kill{
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid #ccc;
 }
 
 .first-kill{
@@ -182,18 +181,12 @@ swiper{
   color: #ff0000;
   font-size: 25rpx;
   font-weight: bold;
-  position: absolute;
-  top: 150rpx;
-  left: 380rpx;
 }
 
 .product-price{
   color: #ccc;
   font-size: 19.6rpx;
-  position: absolute;
   font-weight: bold;
-  top: 158rpx;
-  left: 453rpx;
   text-decoration: line-through;
 }
 
@@ -214,4 +207,14 @@ swiper{
 
 .allPartnership{
   position: relative
+}
+
+.p-price-box{
+  position: absolute;
+  top: 130rpx;
+  left: 378rpx;
+}
+
+.p-price-box text{
+  display: inline-block;
 }

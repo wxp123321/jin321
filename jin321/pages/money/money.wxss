@@ -1,0 +1,15 @@
+.myMoney{
+  margin-left: 40rpx;
+  margin-top: 30rpx;
+}
+
+.moneyBox{
+  margin: 0 40rpx;
+}
+
+.item{
+  font-size: 30rpx;
+  display: block;
+  margin-top: 20rpx;
+  text-indent: 40rpx;
+}

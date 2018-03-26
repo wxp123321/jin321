@@ -1,5 +1,6 @@
-
-
 <view>
-  <text>您的佣金为￥{{money}}</text>
+  <text class='myMoney'>您的总佣金为￥{{money}}</text>
+  <view class='moneyBox' wx:for="{{moneyBox}}">
+    <text class='item'>{{item.date}}获得一笔佣金￥{{item.money}}(用户{{item.id}}{{item.message}})</text>
+  </view>
 </view>

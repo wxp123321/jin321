@@ -1,6 +1,6 @@
 <view wx:if="{{rec}}" wx:for="{{rec}}">
   <!-- 选择商城 -->
-  <view class="choose-store">
+  <view class="choose-store" wx:if="{{item}}">
     <checkbox bindtap='check' data-checked='{{item.checked}}' data-controller="{{index}}" checked='{{item.checked}}' class='choose-box'><text>{{item.mall}}</text></checkbox>
   </view>
   <!-- 选择商城中的产品 -->
@@ -16,7 +16,7 @@
       <view data-ind="{{item.ind}}" bindtap='add' class="add">+</view>
     </view>
   </view>
-  <view class="one-box"></view> 
+  <view class="one-box" wx:if="{{item}}"></view> 
 </view>
 <view wx:if="{{!rec.length}}">
     <image src='../../images/loading.gif' class='loading'></image>
