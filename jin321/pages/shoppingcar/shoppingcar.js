@@ -92,6 +92,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log(this.data.rec.length);
     var that = this;
     wx.getStorage({
       key: 'userid',
@@ -304,8 +305,9 @@ Page({
       success:function(res){
         if(res.data.code == 1){
           for (var k = 0; k < rec.length; k++) {
+            console.log(rec[k].info.length);
             var q = 0;
-            if (rec[k].info.length == 0) {
+            if (rec[k].info.length < 0) {
               
             }else{
               rec.splice(k,1);
@@ -313,15 +315,20 @@ Page({
                 rec: rec
               });
             }
-            for (var o = 0; o < rec[k].info.length; o++ , q++) {
-              var sum = rec[k].info[q].ind;
-              if(ind == sum){
-                that.remove(rec[k].info,rec[k].info[q]);
-                console.log(rec);
-                that.setData({
-                  rec:rec
-                });
+            if(rec.length){
+              for (var o = 0; o < rec[k].info.length; o++ , q++) {
+                var sum = rec[k].info[q].ind;
+                if (ind == sum) {
+                  that.remove(rec[k].info, rec[k].info[q]);
+                  that.setData({
+                    rec: rec
+                  });
+                }
               }
+            }else{
+              that.setData({
+                rec: rec
+              });
             }
           }
         }

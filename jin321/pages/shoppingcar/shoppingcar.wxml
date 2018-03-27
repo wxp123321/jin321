@@ -18,7 +18,7 @@
   </view>
   <view class="one-box" wx:if="{{item}}"></view> 
 </view>
-<view wx:if="{{!rec.length}}">
+<view wx:if="{{rec.length < 0}}">
     <image src='../../images/loading.gif' class='loading'></image>
 </view>
 <view class='box'></view>
