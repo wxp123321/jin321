@@ -6,9 +6,12 @@ var products = [];
 var pId = {};
 //买家留言
 var message = {};
+var message2 = '';
 var uaid= 0;
 //随机字符串
 var nonceStr = '';
+//快递方式
+var type = '';
 Page({
 
   /**
@@ -26,7 +29,9 @@ Page({
       
     },
     oid:'',
-    did: ''
+    did: '',
+    express: [' 快递 免邮',' 自提'],
+    index2: 0
   },
 
   /**
@@ -193,7 +198,6 @@ Page({
             price: price,
             info: info
           }
-          console.log(rec);
           that.setData({
             rec:rec
           });
@@ -265,18 +269,20 @@ Page({
             uid:res.data
           },
           success:function(res){
-            var data = res.data.useraddresses[0];
-            uaid = res.data.useraddresses[0].uaid;
-            that.setData({
-              username: data.ubname.slice(0,6)
-            });
-            that.setData({
-              phoneNumber: data.uphonenum.slice(0,12)
-            });
-            var value = data.uprovince + data.ucity + data.uarea + data.uaddress;
-            that.setData({
-              address: value.slice(0,14)+'...'
-            });
+            if (res.data.useraddresses.length > 0){
+              var data = res.data.useraddresses[0];
+              uaid = res.data.useraddresses[0].uaid;
+              that.setData({
+                username: data.ubname.slice(0, 6)
+              });
+              that.setData({
+                phoneNumber: data.uphonenum.slice(0, 12)
+              });
+              var value = data.uprovince + data.ucity + data.uarea + data.uaddress;
+              that.setData({
+                address: value.slice(0, 14) + '...'
+              });
+            }
           }
         })
       },
@@ -302,7 +308,9 @@ Page({
                 did: that.data.did,
                 uaid: uaid,
                 session: session,
-                orderformproducts: that.data.orderformproducts
+                orderformproducts: that.data.orderformproducts,
+                omessage: message,
+                type:type
               }]
               wx.request({
                 url: 'https://www.jin321.cn/jin321/wx/insertOrder.do',
@@ -354,7 +362,9 @@ Page({
                       did: res.data[i].did,
                       uaid: uaid,
                       session: session,
-                      orderformproducts: that.data.orderformproducts
+                      orderformproducts: that.data.orderformproducts,
+                      omessage: message,
+                      type: type
                     }
                   }
                   wx.request({
@@ -428,6 +438,7 @@ Page({
   },
   //获取买家留言
   getMessage(e){
+    console.log(e.currentTarget.dataset.mall);
     var mall = e.currentTarget.dataset.mall;
     message[mall] = e.detail.value;
   },
@@ -447,5 +458,12 @@ Page({
         url: '../selectAddress/selectAddress?code=3&oid='+that.data.oid
       })
     }
+  },
+  getExpress(e){
+    console.log(e.currentTarget.dataset.mall);
+    type = this.data.express[e.detail.value];
+    this.setData({
+      index2: e.detail.value
+    })
   }
 })

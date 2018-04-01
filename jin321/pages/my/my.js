@@ -232,5 +232,10 @@ Page({
     wx.navigateTo({
       url: '../money/money',
     })
+  },
+  aboutU(){
+    wx.navigateTo({
+      url: '../aboutU/aboutU',
+    })
   }
 })

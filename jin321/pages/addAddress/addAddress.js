@@ -591,7 +591,6 @@ Page({
     });
   },
   getCity(e){
-    console.log(e);
     var id = e.detail.value;
     var value = this.data.region2[id];
     var counties = [];
@@ -604,7 +603,6 @@ Page({
     for(var key in address[this.data.province][value]){
       counties.push(address[this.data.province][value][key]);
     }
-    console.log(counties);
     this.setData({
       region3:counties
     });

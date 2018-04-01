@@ -1,12 +1,7 @@
 <view>
   <!-- 头部 -->
   <view class="bar">
-    <view class="head">
-      <text>晋321</text>
-    </view>
-    <view class="sm-head">
-      <text>诚 <text>· </text>信 <text>· </text>为 <text>· </text>本</text>
-    </view>
+    
     <view class='search-block'>
       <icon class="search-icon" type='search'></icon>
       <input bindfocus="search" class='search' placeholder-style="color:#cccccc" placeholder='搜索晋321商品'/>
@@ -26,7 +21,6 @@
       <image src='../../images/loading.gif' class='loading'></image>
     </view>
   </view>
-  
 
 
   <!-- 限时秒杀 -->

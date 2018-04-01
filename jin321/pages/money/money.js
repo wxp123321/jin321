@@ -12,7 +12,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(new Date(1518164040000).toLocaleString());
     var that = this;
     wx.getStorage({
       key: 'userid',

@@ -1,0 +1,20 @@
+<view>
+  <text class='item'>我平台自2018年率先在太原推行的共享经济平台。平台着力于传承晋商文化之魂，以诚信为根本，共同创建共赢的微循环经济体。我们承诺：诚信守法经营，保障商品质量，让您和您的朋友放心经营，放心消费。</text>
+  <text class='item'>我平台现采用的运营方式为全民经营模式，给每一个朋友都留有一个机会。</text>
+  <text class='item'>我平台现划分如下：（总有一款适合你）</text>
+  <text>平台：</text>
+  <text class='item'>收取从平台售出产品20%利润</text>
+  <text>合伙人：</text>
+  <text class='item'>要求：购买平台合伙人产品即可成为合伙人，享有合伙人权益</text>
+  <text class='item'>权益：享受平台利润20%的平均分红</text>
+  <text class='item2'>享受老板的一切权益</text>
+  <text class='item2'>合伙人一年以后为自由进出机制(全额退款后责不再是合伙人)</text>
+  <text>老板：</text>
+  <text class='item'>权益：享有由本人售出所有产品的40%利润作为奖励</text>
+  <text class='item2'>享受员工售出平台所有产品利润的20%奖励</text>
+  <text>员工：</text>
+  <text class='item'>要求：有梦想即可。</text>
+  <text class='item'>待遇：享有由本人售出平台所有产品利润的40%奖励</text>
+  <text class='item2'>可招募自己员工当老板</text>
+  <text>欢迎各位有志之士加入我们，客服电话：0351—8332628。期待您的到来！</text>
+</view>

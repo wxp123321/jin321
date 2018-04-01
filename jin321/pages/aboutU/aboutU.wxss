@@ -1,0 +1,13 @@
+.item{
+  font-size: 30rpx;
+  display: block;
+  margin-top: 20rpx;
+  text-indent: 40rpx;
+}
+
+.item2{
+  font-size: 30rpx;
+  display: block;
+  margin-top: 20rpx;
+  text-indent: 118rpx;
+}

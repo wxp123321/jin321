@@ -18,7 +18,7 @@
     <image class='commission-icon' src='../../images/money.png'></image>
     <text class='my-commission'>我的佣金</text>
   </view>
-  <view class='we'>
+  <view class='we' bindtap='aboutU'>
     <image class='we-icon' src='../../images/us.png'></image>
     <text class='about-we'>关于我们</text>
   </view>

@@ -27,8 +27,9 @@
       <text class='number'>{{item.num}}</text>
     </view>
     <view class='distribution'>
-      <text class='distribution-text'>配送方式</text>
-      <text class='free-text'>快递 免邮 ></text>
+      <picker mode='selector' data-mall='{{item.mall}}' bindchange='getExpress' value="{{index2}}" range='{{express}}'>
+        <text class='free-text'>配送方式{{express[index2]}}</text>
+      </picker>
     </view>
     <view class='message'>
       <text>买家留言：</text>

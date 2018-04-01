@@ -1,8 +1,10 @@
 .bar{
   width: 100%;
   height: 143px;
-  background: #f19149;
+  background: url('http://www.jin321.cn/jin321/banner/banner.jpg');
+  background-size: 750rpx 430rpx; 
   padding-top: 72px;
+  position: relative;
 }
 
 swiper{
@@ -28,13 +30,16 @@ swiper{
 }
 
 .search-block{
-  margin-top: 23px;
+  position: absolute;
+  padding-bottom:10rpx; 
+  bottom: 10rpx;
+  left: 18rpx;
 }
 
 .search-icon{
   margin-top: 10px;
   position: absolute;
-  left: 216rpx;
+  left: 200rpx;
 }
 
 .search{
