@@ -86,7 +86,7 @@
     </view> 
     <view class='fun'>
       <view class='watch' bindtap='watch' data-oid='{{item.oid}}'>查看物流</view>
-      <view class='already' bindtap='already' data-id='{{item.oid}}'>确认收货</view>
+      <view class='already' bindtap='already' data-oid='{{item.oid}}'>确认收货</view>
     </view>
   </view>
 </view>

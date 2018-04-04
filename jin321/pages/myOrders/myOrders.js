@@ -307,5 +307,18 @@ Page({
     wx.navigateTo({
       url: '../logistics/logistics?oid=' + e.currentTarget.dataset.oid,
     })
+  },
+  already(e){
+    var that = this;
+    wx.request({
+      url: 'https://www.jin321.cn/jin321/wx/confirmReceipt.do',
+      method:'POST',
+      data:{
+        oid: e.currentTarget.dataset.oid
+      },
+      success:function(res){
+        that.getNoRe();
+      }
+    })
   }
 })

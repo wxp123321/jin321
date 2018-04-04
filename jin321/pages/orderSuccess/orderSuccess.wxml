@@ -3,7 +3,7 @@
     <text class='successText'>交易成功</text>
   </view>
   <view class='orderInfo'>
-    <text>收货人：</text>
-    <text>收货地址：</text>
+    <text>收货人：{{name}}</text>
+    <text>收货地址：{{address}}</text>
   </view>
 </view>
