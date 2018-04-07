@@ -4,14 +4,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    phone: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var that = this;
+    wx.request({
+      url: 'https://www.jin321.cn/jin321/wx/aboutUs.do',
+      method: 'GET',
+      success:function(res){
+        that.setData({
+          phone:res.data.detail
+        });
+      }
+    })
   },
 
   /**

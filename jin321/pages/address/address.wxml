@@ -9,10 +9,6 @@
   <view class="one-line"></view>
   <view class='choose'>
     <checkbox class="choose-acquiescence-address" checked='{{item.checked}}'> 默认地址</checkbox>
-    <view bindtap='edit' class="edit-view">
-      <image src='../../images/write.png' class="edit"></image>
-      <text>编辑</text>
-    </view>
     <view bindtap='delete' data-id="{{item.id}}" class="delete-view">
       <image class="delete" src='../../images/delete.png'></image>
       <text>删除</text>

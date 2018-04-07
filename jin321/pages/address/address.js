@@ -76,7 +76,7 @@ Page({
           key: 'userid',
           success: function (res) {
             wx.request({
-              url: "https://www.jin321.cn/jin321/wx/ selectUseraddressByuid.do",
+              url: "https://www.jin321.cn/jin321/wx/selectUseraddressByuid.do",
               method: "POST",
               data: {
                 uid: res.data

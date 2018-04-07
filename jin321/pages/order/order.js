@@ -5,7 +5,7 @@ var products = [];
 //记录pid
 var pId = {};
 //买家留言
-var message = {};
+var message = [];
 var message2 = '';
 var uaid= 0;
 //随机字符串
@@ -194,7 +194,7 @@ Page({
             price += res.data.orderformProductPos[j].pbuyprice;
           }
           rec[0] = {
-            mall: '普普实业',
+            mall: res.data.dname,
             price: price,
             info: info
           }
@@ -303,15 +303,26 @@ Page({
             key: 'mysession',
             success: function (res) {
               session = res.data;
-              var data = [{
-                uid: userid,
-                did: that.data.did,
-                uaid: uaid,
-                session: session,
-                orderformproducts: that.data.orderformproducts,
-                omessage: message,
-                type:type
-              }]
+              if(type == '自提'){
+                var data = [{
+                  uid: userid,
+                  did: that.data.did,
+                  uaid: uaid,
+                  session: session,
+                  orderformproducts: that.data.orderformproducts,
+                  omessage: message[0],
+                  osendmethod: '自提'
+                }]
+              }else{
+                var data = [{
+                  uid: userid,
+                  did: that.data.did,
+                  uaid: uaid,
+                  session: session,
+                  orderformproducts: that.data.orderformproducts,
+                  omessage: message[0]
+                }]
+              }
               wx.request({
                 url: 'https://www.jin321.cn/jin321/wx/insertOrder.do',
                 method: 'POST',
@@ -363,8 +374,7 @@ Page({
                       uaid: uaid,
                       session: session,
                       orderformproducts: that.data.orderformproducts,
-                      omessage: message,
-                      type: type
+                      omessage: message[i]
                     }
                   }
                   wx.request({
@@ -438,9 +448,8 @@ Page({
   },
   //获取买家留言
   getMessage(e){
-    console.log(e.currentTarget.dataset.mall);
-    var mall = e.currentTarget.dataset.mall;
-    message[mall] = e.detail.value;
+    var item = e.currentTarget.dataset.item;
+    message[item] = e.detail.value;
   },
   selectAddress(){
     var that = this;
@@ -460,8 +469,12 @@ Page({
     }
   },
   getExpress(e){
-    console.log(e.currentTarget.dataset.mall);
-    type = this.data.express[e.detail.value];
+    var that = this;
+    if (that.data.code == 1){
+      if (e.detail.value == 1){
+        type = '自提'
+      }
+    }
     this.setData({
       index2: e.detail.value
     })

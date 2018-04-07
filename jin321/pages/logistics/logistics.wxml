@@ -2,7 +2,7 @@
   <view class='header'>
     <image src='{{imgurl}}' class='logisticsImg'></image>
     <text class='orderText'>订单状态</text>
-    <text class='expressName'>{{expressName}}</text>
+    <text class='expressName'>{{expressName}} {{oid}}</text>
   </view>
   <view>
     <view class='content'>

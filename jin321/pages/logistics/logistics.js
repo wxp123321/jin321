@@ -35,14 +35,15 @@ Page({
       url: 'https://www.jin321.cn/jin321/wx/selectExpressageByOid.do',
       method:'POST',
       data:{
-        oid:'888836558644903260'
+        oid:options.oid
       },
       success:function(res){
+        console.log();
         that.setData({
-          express:res.result.list
+          express:res.data.result.list
         });
         that.setData({
-          expressName: res.result.company
+          expressName: res.data.result.company
         });
       }
     })

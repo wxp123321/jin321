@@ -33,7 +33,7 @@
     </view>
     <view class='message'>
       <text>买家留言：</text>
-      <input data-mall='{{item.mall}}' bindinput='getMessage'></input>
+      <input data-item='{{index}}' data-mall='{{item.mall}}' bindinput='getMessage'></input>
     </view>
     <view class='sm-price'>
       <text class='sm-number'>共{{item.num}}件商品</text>
