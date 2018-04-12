@@ -473,7 +473,10 @@ Page({
     if (that.data.code == 1){
       if (e.detail.value == 1){
         type = '自提'
+      }else{
+        type = ''
       }
+      console.log(type);
     }
     this.setData({
       index2: e.detail.value
