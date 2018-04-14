@@ -21,7 +21,8 @@ Page({
     content2:{},
     svalue:'',
     dname:'',
-    did: ''
+    did: '',
+    jianjie: ''
   },
 
   /**
@@ -39,6 +40,9 @@ Page({
         pid:options.pid
       },
       success:function(res){
+        that.setData({
+          jianjie:res.data.psummary.slice(0,50)+'...'
+        });
         that.setData({
           did: res.data.did
         });

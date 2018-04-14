@@ -7,6 +7,7 @@
       </block>
   </swiper>
   <text class='merchandise-text'>{{merchandiseTitle}}</text>
+  <text class='jianjie'>{{jianjie}}</text>
   <text class="merchandise-price">价格￥{{merchandisePrice}}</text>
   <text class="merchandise-original">价格￥{{merchandiseOriginal}}</text>
   <text class='merchandise-volume'>月销{{merchandiseVolume}}笔</text>

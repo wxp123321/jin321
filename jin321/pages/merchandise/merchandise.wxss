@@ -28,7 +28,16 @@
   display: inline-block;
   width: 80%;
   margin-left: 24rpx;
-  font-size: 16px;
+  font-size: 32rpx;
+}
+
+.jianjie{
+  display: inline-block;
+  font-size: 28rpx;
+  width: 90%;
+  margin-left: 38rpx;
+  color: #808080;
+  text-indent: 20rpx;
 }
 
 .merchandise-price{
