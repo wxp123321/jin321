@@ -128,7 +128,6 @@
 
 .changeType2{
   width: 88%;
-  margin: 0 auto;
   font-size: 24rpx;
   display: none;
 }

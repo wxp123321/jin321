@@ -27,8 +27,8 @@
   <view bindtap='addShoppingCar' class="add-shoppingcar">加入购物车</view>
   <view bindtap='order' class="purchasing">立即购买</view>
 </view>
-<view class="detailImg" wx:for="{{img}}">
-  <image class="detailImg" src='{{item}}'></image>
+<view class="imgs" wx:for="{{img}}">
+  <image mode='widthFix' class="detailImg" src='{{item.url}}'></image>
 </view>
 <view wx:if="{{!imgUrls.length}}">
   <image src='../../images/loading.gif' class='loading'></image>

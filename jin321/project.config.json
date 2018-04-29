@@ -122,6 +122,18 @@
 					"name": "佣金",
 					"pathName": "pages/money/money",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "money",
+					"pathName": "pages/money/money",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "aboutU",
+					"pathName": "pages/aboutU/aboutU",
+					"query": ""
 				}
 			]
 		}

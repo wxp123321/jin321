@@ -71,7 +71,7 @@ Page({
               for (var i = 0; i < res.data.length; i++) {
                 info[i] = {
                   url: "https://www.jin321.cn/jin321/" + res.data[i].ppicurl,
-                  name: res.data[i].pname,
+                  name: res.data[i].pname.substring(0, 34)+'...',
                   price: res.data[i].pssellprice,
                   psellnum: res.data[i].psellnum,
                   pid: res.data[i].pid

@@ -62,7 +62,7 @@ Page({
         var c = 0;
         var d = 0;
         for (var i = 0; i < res.data.productsizeList.length;i++){
-          if (res.data.productsizeList[i].sizename.length<20){
+          if (res.data.productsizeList[i].sizename.length<300){
             arr1[b] = res.data.productsizeList[i].sizename;
             sid[arr1[b]] = res.data.productsizeList[i].sid;
             content[res.data.productsizeList[i].sizename] = res.data.productsizeList[i].pssellprice;
@@ -85,7 +85,9 @@ Page({
           arr4[o] = res.data.basePathNoPort + res.data.productpicsList[o].ppicurl;
         }
         for (var k = 0; k < res.data.productdetailList.length;k++){
-          arr3[k] = res.data.basePathNoPort+res.data.productdetailList[k].picurl
+          arr3[k] = {
+            url: res.data.basePathNoPort + res.data.productdetailList[k].picurl
+          }
         }
         for(var j = 0;j<arr1.length;j = j+2){
           arr2[d] = {

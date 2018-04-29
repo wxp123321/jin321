@@ -159,7 +159,7 @@
 }
 
 .detailImg{
-  width: 750rpx;
+  width: 100%;
 }
 
 .loading{
@@ -169,6 +169,10 @@
   top: 50%;
   left: 50%;
   margin: -24rpx 0 0 -34rpx;
+}
+
+.imgs{
+  font-size: 0;
 }
 
 
