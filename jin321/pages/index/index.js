@@ -82,6 +82,7 @@ Page({
     killpicf:"",
     killpicfprice:"",
     newkillpicfprice:"",
+    killpicfname: "啦啦啦啦",
     //秒杀图片
     killpicUrl:[],
      //合伙人图片
@@ -405,6 +406,9 @@ Page({
             killpicfprice: timekill[0].psoriprice
           });
           that.setData({
+            killpicfname: timekill[0].products.pname
+          });
+          that.setData({
             newkillpicfprice: timekill[0].pssellprice
           });
           picId[timekill[0].ppicurl] = timekill[0].pid;
@@ -414,7 +418,8 @@ Page({
               // timestart: timekill[j].timestart,
               // timeend: timekill[j].timeend,
               psoriprice: timekill[j].psoriprice,
-              pssellprice: timekill[j].pssellprice
+              pssellprice: timekill[j].pssellprice,
+              pname: timekill[j].products.pname
             }
             timeKill[j-1] = json;
             const a = timeKill[j-1].url;

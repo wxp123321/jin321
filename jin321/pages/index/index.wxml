@@ -35,8 +35,10 @@
       <view class='kill-price'>
         <text class="current-price" wx:if="{{killpicfprice}}">￥{{killpicfprice}}</text>
         <text class="original-price" wx:if="newkillpicfprice">￥{{newkillpicfprice}}</text>
-      </view>      
+      </view>
+      <view class='killname'>{{killpicfname}}</view>   
     </view>
+
     <!-- for循环秒杀 -->
       <view class='other-kill' wx:for="{{killpicUrl}}" wx:if="{{killpicUrl}}">
         <view class='kill-pic other-kill-pic'>
@@ -46,6 +48,7 @@
           <text class="current-price">￥{{item.pssellprice}}</text>
           <text class="original-price">￥{{item.psoriprice}}</text>
         </view>
+        <view class='killname'>{{item.pname}}</view> 
       </view>
   </view>
   <view wx:if="{{!killpicf.length}}">

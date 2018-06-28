@@ -72,7 +72,18 @@ swiper{
 
 .slide-image{
   width: 100%;
-  height: 120px;
+  height: 280rpx;
+}
+
+.scroll{
+  position: relative;
+  width: 100%;
+  height: 330rpx;
+}
+
+.killname {
+  font-size: 24rpx;
+  text-align: center;  
 }
 
 .second-kill{
@@ -81,10 +92,10 @@ swiper{
 }
 
 .first-kill{
-  color: #f19149;
+  height: 310rpx;
   margin-left: 40rpx;
   margin-top: 17rpx;
-  padding-right:40rpx; 
+  padding-right:40rpx;
   display: flex;
   flex-direction: column; 
   position: relative;
@@ -120,7 +131,7 @@ swiper{
 }
 
 .other-kill{
-  margin-top: 19px;
+  margin-top: 40rpx;
 }
 
 .other-kill-pic{
@@ -202,12 +213,6 @@ swiper{
 
 .timeBox{
   display: none;
-}
-
-.scroll{
-  position: relative;
-  width: 100%;
-  height: 242rpx;
 }
 
 .allPartnership{
